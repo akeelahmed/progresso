@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :boards, foreign_key: :owner_id
+  
   before_validation :ensure_session_token, on: :create
 
   validates :provider, :uid, :session_token, presence: true
