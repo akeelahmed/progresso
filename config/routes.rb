@@ -11,7 +11,7 @@ Progress::Application.routes.draw do
 
   namespace 'api' do
     namespace 'v1' do
-      resources :boards, only: [:index]
+      resources :boards, only: [:index, :create]
     end
   end
 end
