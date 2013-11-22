@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  attr_accessible :body, :cardinality, :is_completed, :list_id
+  attr_accessible :body, :cardinality, :completed, :list_id
 
   belongs_to :list
 end
