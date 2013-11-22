@@ -13,6 +13,36 @@
 
 ActiveRecord::Schema.define(:version => 20131121222222) do
 
+  create_table "boards", :force => true do |t|
+    t.string   "name",       :default => "", :null => false
+    t.integer  "owner_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "boards", ["owner_id"], :name => "index_boards_on_owner_id"
+
+  create_table "cards", :force => true do |t|
+    t.boolean  "completed",   :default => false, :null => false
+    t.text     "body",        :default => "",    :null => false
+    t.integer  "list_id"
+    t.integer  "cardinality", :default => 0,     :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "cards", ["list_id"], :name => "index_cards_on_list_id"
+
+  create_table "lists", :force => true do |t|
+    t.string   "name",        :default => "", :null => false
+    t.integer  "board_id"
+    t.integer  "cardinality", :default => 0,  :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "lists", ["board_id"], :name => "index_lists_on_board_id"
+
   create_table "users", :force => true do |t|
     t.string   "provider",      :null => false
     t.integer  "uid",           :null => false

@@ -1,5 +1,5 @@
 class CreateBoardsListsCards < ActiveRecord::Migration
-  def create
+  def change
     create_table :boards do |t|
       t.string :name, null: false, default: ''
       t.integer :owner_id
@@ -16,7 +16,7 @@ class CreateBoardsListsCards < ActiveRecord::Migration
     end
     
     create_table :cards do |t|
-      t.boolean :is_completed, null: false, default: false
+      t.boolean :completed, null: false, default: false
       t.text :body, null: false, default: ''
       t.integer :list_id
       t.integer :cardinality, null: false, default: 0
@@ -29,3 +29,4 @@ class CreateBoardsListsCards < ActiveRecord::Migration
     add_index :cards, :list_id
   end
 end
+
