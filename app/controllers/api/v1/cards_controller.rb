@@ -1,13 +1,33 @@
 module Api::V1
-  # cards: index, create, show, update, destroy
+  # cards: index, show, create, update, destroy
+
   class CardsController < ApiController
+    def index
+      @cards = List.find(params[:list_id]).cards
+      render 'cards/index'
+    end
+
+    def show
+      @card = Card.find(params[:id])
+      render 'cards/show'
+    end
+
     def create
       params[:card][:cardinality] ||= 0
       @card = Card.new(params[:card])
       if @card.save
         render 'cards/show'
       else
-        render @card.errors.full_messages, :status => 422
+        render @card.errors.full_messages, status: 422
+      end
+    end
+
+    def update
+      @card = Card.find(params[:id])
+      if @card.update_attributes(params[:card])
+        render 'cards/show'
+      else
+        render json: @card.errors.full_messages
       end
     end
 

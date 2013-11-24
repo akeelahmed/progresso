@@ -1,4 +1,11 @@
 PRO.Collections.Cards = Backbone.Collection.extend({
-    url: '/api/v1/cards',
-    model: PRO.Models.Card
+    model: PRO.Models.Card,
+
+    url: function () {
+        return 'api/v1/lists' + this.list_id + 'cards';
+    },
+
+    initialize: function(models, options) {
+        this.list_id = options.list_id;
+    }
 });
