@@ -13,7 +13,7 @@ module SessionsHelper
 
   def logout(user)
     session[:session_token] = nil
-    user.session_token = nil
+    user.session_token = User.generate_session_token
     user.save!
   end
 end

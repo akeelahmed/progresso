@@ -18,6 +18,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def guest
+    user = User.guest_user
+    session[:session_token] = user.session_token
+    redirect_to root_url
+  end
+
   def destroy
     logout current_user
     redirect_to root_url
