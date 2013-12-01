@@ -15,14 +15,14 @@ class User < ActiveRecord::Base
     user.provider = "guest"
     user.uid = Random.rand(1_000_000_000) # TODO better idea than this.
 
-    user.name = "Christopher Guest"
-    user.email = "chris.guest@example.com"
-    user.username = "CGuest"
-    user.gravatar = "205e460b479e2e5b48aec07710c08d50"
+    user.name = 'Christopher Guest'
+    user.email = 'chris.guest@example.com'
+    user.username = 'CGuest'
+    user.gravatar = '205e460b479e2e5b48aec07710c08d50'
     user.session_token = User.generate_session_token
 
     user.save!
-    user.boards.build(name: "Welcome!")
+    user.boards.build(name: 'Welcome!')
     user.save!
 
     user
@@ -44,7 +44,6 @@ class User < ActiveRecord::Base
 
     user.session_token = User.generate_session_token
     user.save!
-
     user
   end
 
