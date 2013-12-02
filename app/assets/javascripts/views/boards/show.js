@@ -7,7 +7,7 @@ PRO.Views.BoardShow = Backbone.View.extend({
     events: {},
 
     render: function() {
-        this.$el.html(this.template({model: this.model}));
+        this.$el.html(this.template({ model: this.model }));
         return this;
     },
 });

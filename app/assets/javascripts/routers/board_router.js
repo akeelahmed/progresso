@@ -1,6 +1,7 @@
 PRO.Routers.Boards = Backbone.Router.extend({
     routes: {
-        '': 'show',
+        '': 'index',
+        'boards/:id': 'show'
     },
 
     initialize: function(options) {
@@ -13,13 +14,13 @@ PRO.Routers.Boards = Backbone.Router.extend({
         this.$content.html(newView.render().$el);
     },
 
-    show: function () {
-        var board = PRO.Store.boards.min(function(board) {
-            return +board.get("cardinality");
-            //TODO Do I really need to cast to number here?
-            //TODO Move into model.
-        });
+    index: function () {
+        var view = new PRO.Views.BoardIndex({collection: PRO.Store.boards});
+        this._swap(view);
+    },
 
+    show: function (id) {
+        var board = PRO.Store.boards.get(id);
         if (board instanceof Backbone.Model) {
             var view = new PRO.Views.BoardShow({model: board});
             this._swap(view);
