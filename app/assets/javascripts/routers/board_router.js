@@ -20,7 +20,9 @@ PRO.Routers.Boards = Backbone.Router.extend({
             //TODO Move into model.
         });
 
-        var view = new PRO.Views.BoardShow({model: board});
-        this._swap(view);
+        if (board instanceof Backbone.Model) {
+            var view = new PRO.Views.BoardShow({model: board});
+            this._swap(view);
+        }
     },
 });

@@ -3,5 +3,6 @@ PRO.Models.Card = Backbone.Model.extend({
 
     parse: function(response) {
         // TODO: gonna have to do stuff
+        return response
     },
 });

@@ -9,6 +9,18 @@ class User < ActiveRecord::Base
     SecureRandom::urlsafe_base64(20)
   end
 
+  def generate_todo_board
+    ActiveRecord::Base.transaction do
+      board = Board.create!(name: 'ToDo', owner_id: id)
+      doing_list = List.create!(name: 'Doing', board_id: board.id, cardinality: 0)
+      done_list = List.create!(name: 'Done', board_id: board.id, cardinality: 1)
+      Card.create!(completed: false, body: 'Walk Dog', list_id: doing_list.id, cardinality: 0)
+      Card.create!(completed: false, body: 'Get Coffee', list_id: doing_list.id, cardinality: 1)
+      Card.create!(completed: true, body: 'Browse Craigslist Gigs', list_id: doing_list.id, cardinality: 2)
+      Card.create!(completed: true, body: 'Wake Up', list_id: done_list.id, cardinality: 0)
+    end
+  end
+
   def self.guest_user
     user = User.new
 
@@ -17,14 +29,13 @@ class User < ActiveRecord::Base
 
     user.name = 'Christopher Guest'
     user.email = 'chris.guest@example.com'
-    user.username = 'CGuest'
+    user.username = 'CBoy'
     user.gravatar = '205e460b479e2e5b48aec07710c08d50'
     user.session_token = User.generate_session_token
 
     user.save!
-    user.boards.build(name: 'Welcome!')
-    user.save!
 
+    user.generate_todo_board
     user
   end
 
