@@ -1,3 +1,7 @@
 <% this.collection.each(function(model) { %>
-<%= model.get('name') %>
+   <li class="boards__board-link">
+       <a href="#boards/<%= model.id %>">
+          <%= model.get('name') %>
+       </a>
+   </li>
 <% }) %>
