@@ -1,8 +1,8 @@
 PRO.Views.ListNew = Backbone.View.extend({
     template: JST['lists/new'],
     tagName: 'div',
-    className: 'lists__list--new',
-    id: 'new-list',
+    className: 'lists__list--new__form',
+    id: 'new-list-form',
 
     events: {
         'keyup input': '_handleKey',
