@@ -1,15 +1,15 @@
-PRO.Views.BoardNew = Backbone.View.extend({
-    template: JST['boards/edit'],
+PRO.Views.ListNew = Backbone.View.extend({
+    template: JST['lists/new'],
     tagName: 'div',
-    className: 'boards__board--new__form',
-    id: 'new-board-form',
+    className: 'lists__list--new',
+    id: 'new-list',
 
     events: {
-        "keyup input": "handleKey",
-        "blur input": "save",
+        'keyup input': '_handleKey',
+        'blur input': 'save',
     },
 
-    handleKey: function(event) {
+    _handleKey: function(event) {
         if (event.keyCode === 13) {
             this.save();
         } else if (event.keyCode === 27) {
@@ -19,24 +19,25 @@ PRO.Views.BoardNew = Backbone.View.extend({
 
     save: function() {
         var that = this;
-        var name = this.$('#board-name').val();
+        var name = this.$('#list-name').val();
         if (name.length === 0) {
             this.$el.trigger('close');
             return;
-            //TODO Refactor to remove weirdness of error checking here.
+            //TODO refactor.
         }
 
         this.model.save(
             { name: name },
-            { success: function () {
-                that.$el.trigger('close');
-              }
+            {
+                success: function () {
+                    console.log('saved');
+                },
             }
-        );
+        )
     },
 
     render: function() {
         this.$el.html(this.template({ model: this.model }));
         return this;
     }
-});
+})

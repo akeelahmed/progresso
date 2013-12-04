@@ -27,7 +27,6 @@ PRO.Views.BoardIndex = Backbone.View.extend({
     },
 
     render: function() {
-        console.log('rendered');
         this.$el.html(this.template({ collection: this.collection }));
         return this;
     },
