@@ -25,12 +25,11 @@ PRO.Views.ListNew = Backbone.View.extend({
             return;
             //TODO refactor.
         }
-
         this.model.save(
             { name: name },
             {
                 success: function () {
-                    console.log('saved');
+                    that.$el.trigger('close')
                 },
             }
         )

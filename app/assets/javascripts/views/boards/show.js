@@ -23,19 +23,25 @@ PRO.Views.BoardShow = Backbone.View.extend({
 
     closeNewView: function() {
         var that = this;
-        this.model.get('lists').fetch({
+        console.log(that.model.get('lists').pluck('cardinality'));
+        this.model.fetch({
             success: function () {
-                console.log('successful!');
+                that._buildChildren();
+                that.render();
             }
         });
     },
 
-    initialize: function () {
+    _buildChildren: function() {
         this._children = _(this.model.get("lists").map(
             function(list) {
-                return new PRO.Views.ListShow({model: list});
+                return new PRO.Views.ListShow({ model: list });
             }
         ));
+    },
+
+    initialize: function () {
+        this._buildChildren();
     },
 
     remove: function() {
