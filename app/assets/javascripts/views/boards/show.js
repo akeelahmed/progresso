@@ -1,12 +1,28 @@
-PRO.Views.BoardShow = Backbone.View.extend({
+PRO.Views.BoardShow = PRO.Views.ParentView.extend({
     template: JST['boards/show'],
     tagName: 'div',
     className: 'board',
     id: 'board',
+    children: function() {
+        return this.model.get('lists');
+    },
+    childViewClass: function() {
+        return PRO.Views.ListShow
+    },
 
     events: {
         'click .lists__list--new__button': 'openNewView',
         'close .lists__list--new': 'closeNewView'
+    },
+
+    render: function() {
+        this.$el.html(this.template({ model: this.model }));
+        var $lists = this.$('#lists').empty();
+        this._buildChildViews().each(
+            function(listView) {
+                $lists.append(listView.render().$el);
+            });
+        return this;
     },
 
     openNewView: function (event) {
@@ -23,47 +39,10 @@ PRO.Views.BoardShow = Backbone.View.extend({
 
     closeNewView: function() {
         var that = this;
-        console.log(that.model.get('lists').pluck('cardinality'));
         this.model.fetch({
             success: function () {
-                that._buildChildren();
                 that.render();
             }
         });
-    },
-
-    _buildChildren: function() {
-        this._children = _(this.model.get("lists").map(
-            function(list) {
-                return new PRO.Views.ListShow({ model: list });
-            }
-        ));
-    },
-
-    initialize: function () {
-        this._buildChildren();
-    },
-
-    remove: function() {
-        Backbone.View.prototype.remove.apply(this, arguments);
-        this._removeAllChildren();
-    },
-
-    _removeAllChildren: function() {
-        _(this._children).each(
-            function(view) {
-                view.remove();
-            });
-        this._children = [];
-    },
-
-    render: function() {
-        this.$el.html(this.template({ model: this.model }));
-        var $lists = this.$('#lists');
-        $lists.empty();
-        this._children.each(function(list) {
-            $lists.append(list.render().$el);
-        });
-        return this;
     },
 });
