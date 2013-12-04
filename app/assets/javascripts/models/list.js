@@ -1,7 +1,9 @@
 PRO.Models.List = Backbone.Model.extend({
     urlRoot: '/api/v1/lists',
 
-    comparator: 'cardinality',
+    url: function() {
+        return '/api/v1/boards/' + this.board_id + '/lists';
+    },
 
     parse: function(response) {
         response.cards = new PRO.Collections.Cards(
