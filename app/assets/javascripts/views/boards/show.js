@@ -10,7 +10,12 @@ PRO.Views.BoardShow = Backbone.View.extend({
     },
 
     openNewView: function (event) {
-        var newList = new PRO.Models.List();
+        var lists = this.model.get('lists');
+        var newList = new PRO.Models.List({
+            board_id: this.model.id,
+            cardinality: (_.max(lists.pluck('cardinality')) + 1),
+        });
+
         this._newListView = new PRO.Views.ListNew({ model: newList });
         this.$('.lists__list--new').html(this._newListView.render().$el);
         this.$('#list-name').focus();
