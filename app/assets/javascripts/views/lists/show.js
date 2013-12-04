@@ -1,16 +1,18 @@
 PRO.Views.ListShow = PRO.Views.ParentView.extend({
     template: JST['lists/show'],
-    tagName: 'div',
+    tagName: 'li',
     className: 'list',
     children: function () {
         return this.model.get('cards');
     },
+
     childViewClass: function() {
         return PRO.Views.CardShow
     },
+
     events: {
         'click .cards__new-card__button': 'openNewView',
-        'close-card .cards__new-card': 'closeNewView'
+        'close .cards__new-card': 'closeNewView'
     },
 
     render: function () {
@@ -43,5 +45,5 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
         this.model.get('cards').fetch({
             success: this.render.bind(this)
         });
-    }
+    },
 });

@@ -24,11 +24,11 @@ PRO.Views.CardNew = Backbone.View.extend({
         if (body.length > 0) {
             this.model.save({body: body}, {
                 success: function () {
-                    that.$el.trigger('close-card');
+                    that.$el.trigger('close');
                 },
             });
         } else {
-            that.$el.trigger('close-card');
+            that.$el.trigger('close');
         }
     }
 });

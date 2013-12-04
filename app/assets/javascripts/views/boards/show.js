@@ -15,13 +15,23 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         'close .lists__list--new': 'closeNewView'
     },
 
-    render: function() {
-        this.$el.html(this.template({ model: this.model }));
+    renderLists: function() {
         var $lists = this.$('#lists').empty();
         this._buildChildViews().each(
             function(listView) {
                 $lists.append(listView.render().$el);
             });
+        var $newListButton = $('<li class="lists__list--new">')
+            .append(
+                $('<span class="lists__list--new__button">new list</span>')
+            );
+
+        $lists.append($newListButton);
+    },
+
+    render: function() {
+        this.$el.html(this.template({ model: this.model }));
+        this.renderLists();
         return this;
     },
 
@@ -39,6 +49,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
 
     closeNewView: function() {
         var that = this;
+        this._newListView.remove();
         this.model.fetch({
             success: this.render.bind(this)
         });

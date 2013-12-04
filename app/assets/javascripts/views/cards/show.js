@@ -3,7 +3,9 @@ PRO.Views.CardShow = Backbone.View.extend({
     tagName: 'li',
     className: 'card',
 
-    events: {},
+    events: {
+        'click .delete-card': 'delete'
+    },
 
     render: function() {
         this.$el.html(this.template({ model: this.model }));
