@@ -29,14 +29,14 @@ PRO.Views.ListNew = Backbone.View.extend({
             { name: name },
             {
                 success: function () {
-                    that.$el.trigger('close')
+                    that.$el.trigger('close');
                 },
             }
-        )
+        );
     },
 
     render: function() {
         this.$el.html(this.template({ model: this.model }));
         return this;
     }
-})
+});

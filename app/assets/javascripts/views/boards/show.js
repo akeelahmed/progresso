@@ -40,9 +40,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
     closeNewView: function() {
         var that = this;
         this.model.fetch({
-            success: function () {
-                that.render();
-            }
+            success: this.render.bind(this)
         });
     },
 });
