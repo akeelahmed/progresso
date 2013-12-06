@@ -1,7 +1,7 @@
 PRO.Views.ListShow = PRO.Views.ParentView.extend({
     template: JST['lists/show'],
     tagName: 'li',
-    className: 'four columns list',
+    className: 'list',
     children: function () {
         return this.model.get('cards');
     },

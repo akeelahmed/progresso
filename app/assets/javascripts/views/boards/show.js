@@ -11,8 +11,8 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
     },
 
     events: {
-        'click .lists__list--new__button': 'openNewView',
-        'close .lists__list--new': 'closeNewView',
+        'click .list--new__button': 'openNewView',
+        'close .list--new': 'closeNewView',
         'sortstop #lists': 'resetCardinalities',
         'sortreceive #lists': 'moveItem'
     },
@@ -41,9 +41,9 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
             function(listView) {
                 $lists.append(listView.render().$el);
             });
-        var $newListButton = $('<li class="lists__list--new">')
+        var $newListButton = $('<li class="list--new">')
             .append(
-                $('<span class="lists__list--new__button">new list</span>')
+                $('<span class="list--new__button">new list</span>')
             );
 
         $lists.append($newListButton);
@@ -67,7 +67,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         });
 
         this._newListView = new PRO.Views.ListNew({ model: newList });
-        this.$('.lists__list--new').html(this._newListView.render().$el);
+        this.$('.list--new').html(this._newListView.render().$el);
         this.$('#list-name').focus();
     },
 
