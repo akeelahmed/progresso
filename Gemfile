@@ -10,6 +10,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'ejs'
 gem 'backbone-on-rails'
 gem 'omniauth'
