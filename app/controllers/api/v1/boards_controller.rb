@@ -1,17 +1,17 @@
 module Api::V1
   # boards: index, show, create, update, destroy
-  
+
   class BoardsController < ApiController
     def index
       @boards = current_user.boards
       render 'boards/index'
     end
-    
+
     def show
       @board = Board.find(params[:id])
-      
+
       if @board.owner_id = current_user.id
-        render 'boards/show' 
+        render 'boards/show'
       else
         render json: { msg: "You're not authorized" }, status: 401
       end
@@ -26,10 +26,11 @@ module Api::V1
         render @board.errors.full_messages, :status => 422
       end
     end
-    
-    def update 
+
+    def update
       @board = Board.find(params[:id])
       @board.update_attributes(params[:board])
+      render 'boards/show'
     end
 
     def destroy

@@ -2,7 +2,11 @@ PRO.Models.Card = Backbone.Model.extend({
     urlRoot: '/api/v1/cards',
 
     url: function() {
-        return '/api/v1/lists/' + this.get('list_id') + '/cards';
+        if (this.isNew()) {
+            return '/api/v1/lists/' + this.get('list_id') + '/cards';
+        } else {
+            return '/api/v1/cards/' + this.id;
+        }
     },
 
     parse: function(response) {

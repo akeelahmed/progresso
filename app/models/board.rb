@@ -1,5 +1,6 @@
 class Board < ActiveRecord::Base
-  attr_accessible :name, :owner_id
+  attr_accessible :name, :owner_id, :lists_attributes
+
   validates :name, :owner_id, presence: true
 
   belongs_to :owner,
@@ -8,4 +9,5 @@ class Board < ActiveRecord::Base
              inverse_of: :boards
 
   has_many :lists
+  accepts_nested_attributes_for :lists
 end

@@ -1,1 +1,1 @@
-json.(card, :completed?, :body, :list_id, :cardinality)
+json.(card, :completed, :body, :list_id, :cardinality)

@@ -12,7 +12,27 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
 
     events: {
         'click .lists__list--new__button': 'openNewView',
-        'close .lists__list--new': 'closeNewView'
+        'close .lists__list--new': 'closeNewView',
+        'sortstop #lists': 'resetCardinalities',
+        'sortreceive #lists': 'moveItem'
+    },
+
+    resetCardinalities: function (e) {
+        var that = this;
+        var ids = $.map($('#lists').children(), function(o) {
+            return $(o).data('id');
+        });
+        _(ids).each(
+            function(id, cardinality) {
+                that.model.get('lists').get(id).set('cardinality', cardinality);             });
+        this.model.save();
+    },
+
+    moveItem: function (e, ui) {
+        var fromList = ui.sender.data('id');
+        var toList = $(e.target).data('id');
+        var item = $(ui.item).data('id')
+        console.log(ui);
     },
 
     renderLists: function() {
@@ -32,6 +52,10 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
     render: function() {
         this.$el.html(this.template({ model: this.model }));
         this.renderLists();
+        this.$("#lists").sortable({
+            items: '.list',
+            handle: '.lists__list__name'
+        }).disableSelection();
         return this;
     },
 
