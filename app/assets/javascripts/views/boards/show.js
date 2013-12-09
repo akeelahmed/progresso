@@ -31,7 +31,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
     moveItem: function (e, ui) {
         var fromList = ui.sender.data('id');
         var toList = $(e.target).data('id');
-        var item = $(ui.item).data('id')
+        var item = $(ui.item).data('id');
         console.log(ui);
     },
 

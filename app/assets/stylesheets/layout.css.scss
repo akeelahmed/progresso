@@ -14,41 +14,132 @@
 	#Media Queries
 	#Font-Face */
 
+/* #Colors
+================================================== */
+$Dark: #2B2B29;
+$Light: #FFF;
+$AlmostLight: #FAFAFA;
+$HighlightBright: #89EBFF;
+$HighlightDark: #172bae;
+
+$BG1: $AlmostLight;
+$BG2: $Light;
+$Color: $HighlightBright;
+$Text: $Dark;
+$Shadow: #AAA;
+
+/* #Fonts
+================================================== */
+@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
+
+$sans: 'PT Sans Narrow', sans-serif;
+$serif: 'PT Serif', serif; 
+
+
+body {
+  font-family: $serif
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $sans
+}
+
+
 /* #Site Styles
 ================================================== */
+body {
+  color: $Text;
+  background-color: $BG1;
+  margin: 0;
+}
+
+a {
+  color: $Text;
+}
 
 .container{
-  outline: 1px solid blue;
+  background-color: $BG1;
 }
 
 /* #Page Styles
 ================================================== */
-
-.list {
-  display: inline-block;
-  vertical-align: top;
-  width: 220px;
-  margin: 0.5em;
-  outline: 1px solid black;
+.board {
+   margin: 24px;
+   padding: 12px;
 }
 
-.list--new {
-  @extend .list
+.board__name {
+}
+
+.board__name__text {
+  margin: 0;
+  padding: 0 12px;
+  padding-left: 12px;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+.board__lists-area {
+  position: relative;
+}
+
+.board__lists-area__inset-shadow-mask { 
+  // Cute workaround.
+  position: absolute;
+  top: 0px; left: 0px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* to make clicks pass through */
+  box-shadow: 3px 0 10px -4px $Shadow inset, 
+             -3px 0 10px -4px $Shadow inset;
 }
 
 .lists {
-  padding: 0;
+  padding: 12px;
   margin: 0;
   overflow: auto;
   white-space: nowrap;
   list-style: none;
 }
 
+.lists__list__name {
+  font-family: $sans;
+  font-weight: bold;
+}
+
+.list {
+  background-color: $BG2;
+  box-shadow: 0px 0px 4px 1px $Shadow;
+  padding: 12px;
+  display: inline-block;
+  vertical-align: top;
+  width: 220px;
+  margin: 0.5em;
+  margin-left: 0;
+}
+
+.list + .list {
+  margin-left: 0.5em;
+}
+
+.list--new {
+  @extend .list
+}
+
+.card {
+  margin: 2px;
+  background-color: $BG2;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 1px 0px $Shadow;
+ }
+
 .cards {
   list-style: none;
   margin: 0;
   padding: 0;
-  outline: 1px solid red;
 }
 
 

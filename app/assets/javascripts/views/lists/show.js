@@ -53,7 +53,7 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
             $cards.append(cardView.render().$el);
         });
         var $newCard = $('<li class="cards__new-card"></li>')
-            .html('<span class="cards__new-card__button">new card</span>');
+            .html('<span class="cards__new-card__button">&#10010;</span>');
         $cards.append($newCard);
         this.$('.cards').sortable({
             connectWith: '.cards',
