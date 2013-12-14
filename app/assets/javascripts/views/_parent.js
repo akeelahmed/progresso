@@ -25,11 +25,13 @@ PRO.Views.ParentView = Backbone.View.extend({
     },
 
     _removeAllChildren: function () {
+        if (!this._childViews) return;
         this._childViews.each(
             function(view) {
                 view.remove();
             }
         );
         this._childViews = [];
+        return this;
     },
 });

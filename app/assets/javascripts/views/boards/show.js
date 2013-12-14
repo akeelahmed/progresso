@@ -3,6 +3,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
     tagName: 'div',
     className: 'board',
     id: 'board',
+    // Necessitated by ParentView superclass.
     children: function() {
         return this.model.get('lists');
     },
@@ -14,25 +15,55 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         'click .list--new__button': 'openNewView',
         'close .list--new': 'closeNewView',
         'sortstop #lists': 'resetCardinalities',
-        'sortreceive #lists': 'moveItem'
+        'sortreceive #lists': 'moveItem',
+        'click .board__name': 'openEditView',
+        'close .board__name': 'closeEditView'
+    },
+
+    openEditView: function () {
+        this._editView = new PRO.Views.BoardEdit({ model: this.model });
+        //TODO make sure to add _editView to children for clean up.
+        this.$('.board__name').html(this._editView.render().$el);
+        this.$('.board__name input').focus();
+    },
+
+    closeEditView: function () {
+        this._editView.remove();
+        this._editView = undefined;
+        this.$('.board__name').html(
+            $("<h1 class=\"board__name__text\">")
+                .html(this.model.escape('name'))
+        );
     },
 
     resetCardinalities: function () {
-        var that = this;
-        var ids = $.map($('#lists').children(), function(o) {
-            return $(o).data('id');
+        // Get list of list ids in order they appear.
+        var ids = $.map($('#lists').children(), function(list) {
+            return $(list).data('id');
         });
+
+        // Set each model's cardinality to their id's position.
+        var lists = this.model.get('lists');
         _(ids).each(
             function(id, cardinality) {
-                that.model.get('lists').get(id).set('cardinality', cardinality);             });
+                lists.get(id).set('cardinality', cardinality);
+            });
+
         this.model.save();
     },
 
     moveItem: function (e, ui) {
-        var fromList = ui.sender.data('id');
-        var toList = $(e.target).data('id');
-        var item = $(ui.item).data('id');
-        console.log(fromList, toList, item);
+        var fromList, toList, item;
+        fromList = this.model.get('lists').get(ui.sender.data('id'));
+        toList = this.model.get('lists').get($(e.target).data('id'));
+        item = fromList.get('cards').get($(ui.item).data('id'));
+
+        fromList.get('cards').remove(item);
+        toList.get('cards').add(item);
+        item.save({ list_id: toList.id });
+
+        // Reset cardinality on recipient list.
+        $(e.target).trigger('sortstop');
     },
 
     renderLists: function() {
@@ -73,9 +104,26 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
 
     closeNewView: function() {
         var that = this;
-        this._newListView.remove();
         this.model.fetch({
-            success: this.render.bind(this)
+            success: function appendNewList(model) {
+                var $lists = that.$('#lists');
+
+                var viewClass = that.childViewClass();
+                var newView = new viewClass({
+                    model: that._newListView.model
+                });
+                that._childViews.push(newView);
+
+                that._newListView.remove();
+                $lists.append(newView.render().$el);
+
+                that.$('.list--new').remove();
+                var $newListButton = $('<li class="list--new">')
+                    .html(
+                        $('<span class="list--new__button">new list</span>')
+                    );
+                $lists.append($newListButton);
+            }
         });
     },
 });
