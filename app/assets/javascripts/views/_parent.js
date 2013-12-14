@@ -12,6 +12,8 @@ PRO.Views.ParentView = Backbone.View.extend({
         if (!(this.children && this.childViewClass)) {
             throw "Error: Need children and childViewClass attributes.";
         }
+
+        this._removeAllChildren();
         var view = this.childViewClass();
 
         this._childViews = _(this.children().map(
