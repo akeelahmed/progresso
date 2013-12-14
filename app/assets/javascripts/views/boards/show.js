@@ -7,7 +7,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         return this.model.get('lists');
     },
     childViewClass: function() {
-        return PRO.Views.ListShow
+        return PRO.Views.ListShow;
     },
 
     events: {
@@ -17,7 +17,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         'sortreceive #lists': 'moveItem'
     },
 
-    resetCardinalities: function (e) {
+    resetCardinalities: function () {
         var that = this;
         var ids = $.map($('#lists').children(), function(o) {
             return $(o).data('id');
@@ -32,7 +32,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         var fromList = ui.sender.data('id');
         var toList = $(e.target).data('id');
         var item = $(ui.item).data('id');
-        console.log(ui);
+        console.log(fromList, toList, item);
     },
 
     renderLists: function() {

@@ -20,7 +20,7 @@ PRO.Views._CardForm = Backbone.View.extend({
 
     save: function () {
         var that = this;
-        var body = this.$('.body').val();
+        var body = this.$('.card-body').val();
         this.model.set({body: body})
         console.log(this.model.id);
         if (body.length > 0) {

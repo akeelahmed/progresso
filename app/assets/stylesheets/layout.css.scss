@@ -142,6 +142,29 @@ a {
   padding: 0;
 }
 
+input.card-body {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  font-size: 1em;
+  font-family: $serif;
+  box-shadow: none;
+  width: 100%;
+  font-style:italic;
+}
+
+.lists__list__name__form {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  font-size: 1em;
+  font-family: $sans;
+  width: 100%;
+  font-style: italic;
+  font-weight: bold;
+}
 
 /* #Media Queries
 ================================================== */
