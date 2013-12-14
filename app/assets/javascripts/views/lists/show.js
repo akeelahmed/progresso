@@ -20,7 +20,6 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
 
     resetCardinalities: function (e) {
         e.stopPropagation();
-        console.log('reset from list/show');
         var that = this;
         var ids = $.map(this.$('.card'), function(o) {
             return $(o).data('id');
@@ -30,7 +29,6 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
                 that.model.get('cards').get(id).set('cardinality', cardinality);
             });
         this.model.save();
-        console.log(that.model.get('cards').pluck('cardinality'), that.model.get('cards').pluck('body'))
     },
 
     openEditView: function () {
