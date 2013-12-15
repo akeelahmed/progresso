@@ -78,6 +78,23 @@ a {
   padding-left: 12px;
   font-weight: bold;
   letter-spacing: 0.02em;
+  font-size: 1.6em;
+}
+
+.board__name__form input {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  font-size: 1.6em;
+  font-family: $sans;
+  box-shadow: none;
+  width: 100%;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  font-size: 1.6em;
+  font-weight: bold;
+  background-color: $BG1;
 }
 
 .board__lists-area {
