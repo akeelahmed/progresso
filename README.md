@@ -1,11 +1,12 @@
 # Progress
 
-Progress is a Way to manage tasks. It may seem a lot like 
-[Trello](https://trello.com/), that's because it is a _rough_ 
-clone of Trello. Minus some of the features.
+Progress is a Way to manage tasks.
+
+It may seem a lot like [Trello](https://trello.com/), that's primarily
+because it _is_ a Trello clone.
 
 Create boards, add lists to the boards, and add cards to the lists.
-Drag the lists and cards around to rearrange them, mark cards as completed.
+Drag the lists and cards around to rearrange them, click things to edit them.
 
 ## Tech
 
