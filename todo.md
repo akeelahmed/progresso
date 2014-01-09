@@ -3,10 +3,23 @@
 - [ ] Fancy up Splash page.
 - [ ] Fancy up the Boards index.
 - [ ] Refactor to not include serialized children of Boards and Lists.
-- [ ] write `Board#` / `List#set_child_cardinalities`
+- [x] write `Board#` / `List#set_child_cardinalities`
       takes array of child IDs, sets the proper cardinalities.
       - If the attribute `child_ids` is present during save,
         call this method.
+      - SQL may look like this:
+
+```SQL
+UPDATE
+  lists AS l
+SET
+  cardinality = c.cardinality
+    FROM
+      (values #{values}) as c (id, cardinality)
+where c.id = l.id and l.board_id = ?;
+-- Where values = "(id, cardinality), (id, cardinality)"
+```
+
 - [ ] When dropping card/list on board, just save the model with
       the special `child_ids` attribute.
 - [ ] New List should just be a plus button.
