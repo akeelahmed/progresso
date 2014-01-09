@@ -10,6 +10,10 @@ class Board < ActiveRecord::Base
 
   has_many :lists
 
+  def ordered_list_ids=(ids)
+    set_cardinalities(ids)
+  end
+
   def set_cardinalities(ordered_ids)
     values = []
     ordered_ids.each_with_index do |unsafe_id, cardinality|

@@ -5,15 +5,14 @@ PRO.Models.Board = Backbone.Model.extend({
          response.lists = new PRO.Collections.Lists(
             response.lists, { parse: true, board_id: response.id }
          );
+
+         response.ordered_list_ids = response.lists.pluck('id');
          return response;
      },
 
     toJSON: function(options) {
         var attrs = _.clone(this.attributes);
-        if (attrs.lists && !options.shallow) {
-            attrs.lists_attributes = attrs.lists.toJSON({ shallow: true });
-        };
-        delete attrs.lists
+        delete attrs.lists // Delete the lists collection.
         return attrs;
     },
 });

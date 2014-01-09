@@ -41,14 +41,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         var ids = $.map($('#lists').children(), function(list) {
             return $(list).data('id');
         });
-
-        // Set each model's cardinality to their id's position.
-        var lists = this.model.get('lists');
-        _(ids).each(
-            function(id, cardinality) {
-                lists.get(id).set('cardinality', cardinality);
-            });
-
+        this.model.set('ordered_list_ids', ids);
         this.model.save();
     },
 
