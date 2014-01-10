@@ -12,15 +12,14 @@ PRO.Models.List = Backbone.Model.extend({
         response.cards = new PRO.Collections.Cards(
             response.cards, { parse: true, list_id: response.id }
         );
+
+        response.ordered_card_ids = response.cards.pluck('id');
         return response;
     },
 
     toJSON: function (options) {
         var attrs = _.clone(this.attributes);
-        if (attrs.cards && !options.shallow) {
-            attrs.cards_attributes = attrs.cards.toJSON({ shallow: true });
-        }
-        delete attrs.cards;
+        delete attrs.cards; // Don't send the cards collection.
         return attrs;
-    }
+    },
 });
