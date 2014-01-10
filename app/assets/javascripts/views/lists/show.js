@@ -24,11 +24,8 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
         var ids = $.map(this.$('.card'), function(o) {
             return $(o).data('id');
         });
-        _(ids).each(
-            function(id, cardinality) {
-                that.model.get('cards').get(id).set('cardinality', cardinality);
-            });
-        this.model.save();
+
+        this.model.save({ ordered_card_ids: ids });
     },
 
     openEditView: function () {
