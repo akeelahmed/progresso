@@ -1,5 +1,6 @@
 PRO.Models.List = Backbone.Model.extend({
     url: function() {
+        // TODO: Refactor.
         if (this.isNew()) {
             return '/api/v1/boards/' + this.get('board_id') + '/lists';
         } else {
