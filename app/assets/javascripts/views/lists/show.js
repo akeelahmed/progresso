@@ -11,7 +11,7 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
     },
 
     events: {
-        'click .cards__new-card__button': 'openNewView',
+        'click .new-card-button': 'openNewView',
         'close .cards__new-card': 'closeNewView',
         'click .lists__list__name': 'openEditView',
         'close .lists__list__name': 'closeEditView',
@@ -47,9 +47,10 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
         this._buildChildViews().each(function(cardView) {
             $cards.append(cardView.render().$el);
         });
-        var $newCard = $('<li class="cards__new-card"></li>')
-            .html('<span class="cards__new-card__button">&#10010;</span>');
-        $cards.append($newCard);
+        var $newCardBtn = $('<div class="new-card-button"></div>')
+            .html('<span class="new-card-button__button">&#10010;</span>');
+
+        this.$el.append($newCardBtn);
         this.$('.cards').sortable({
             connectWith: '.cards',
             items: '.card',
@@ -67,15 +68,19 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
         });
 
         this._newCardView = new PRO.Views.CardNew({ model: newCard});
-        this.$('.cards__new-card')
-            .html(this._newCardView.render().$el);
+        $newCard = $('<li class="cards__new-card card">');
+        $newCard.html(this._newCardView.render().$el);
+        this.$('.cards').append($newCard);
         this.$('.cards__new-card input').focus();
     },
 
     closeNewView: function() {
         var that = this;
         this.model.get('cards').fetch({
-            success: this.render.bind(this)
+            success: function() {
+                that.render();
+                console.log(that.$el);
+            }
         });
     },
-});
+};
