@@ -79,8 +79,7 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
         this.model.get('cards').fetch({
             success: function() {
                 that.render();
-                console.log(that.$el);
             }
         });
     },
-};
+});
