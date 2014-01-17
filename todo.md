@@ -27,6 +27,7 @@ where c.id = l.id and l.board_id = ?;
 - [ ] Droppable area should be more clear.
 - [ ] Move 'New Card' and 'New List' items out of their `<ul>`s so they cant be
       dropped after.
+- [ ] Trying to save empty card should delete.
 - [ ] Fix pointers.
 - [ ] Make it clearer when things are click-to-edit.
 - [ ] Make it clearer when things are in edit state.

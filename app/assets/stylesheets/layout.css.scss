@@ -16,6 +16,13 @@
 
 /* #Colors
 ================================================== */
+/*
+#FFF1DA
+#F4E8FF
+#F8FFD4
+#C6F9FF
+#FFD1C7
+*/
 $Dark: #2B2B29;
 $Light: #FFF;
 $AlmostLight: #FAFAFA;
@@ -28,6 +35,12 @@ $Color: $HighlightBright;
 $Text: $Dark;
 $Shadow: #AAA;
 
+$body-bg: $BG1;
+$card-hover-bg: darken($BG2, 5%);
+$card-placeholder: darken($BG2, 15%);
+$lists-bg: lighten($HighlightDark, 50%);
+
+
 /* #Fonts
 ================================================== */
 @import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
@@ -38,7 +51,9 @@ $serif: 'PT Serif', serif;
 
 
 body {
-  font-family: $serif
+  font-family: $serif;
+  box-sizing: border-box;
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -50,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 ================================================== */
 body {
   color: $Text;
-  background-color: $BG1;
+  background-color: $body-bg;
   margin: 0;
 }
 
@@ -58,8 +73,8 @@ a {
   color: $Text;
 }
 
-.container{
-  background-color: $BG1;
+a:hover {
+  color: darken($Text, 10%);
 }
 
 /* #Page Styles
@@ -99,6 +114,7 @@ a {
 
 .board__lists-area {
   position: relative;
+  background-color: $lists-bg;
 }
 
 .board__lists-area__inset-shadow-mask { 
@@ -127,13 +143,13 @@ a {
 
 .list {
   background-color: $BG2;
-  box-shadow: 0px 0px 4px 1px $Shadow;
   padding: 12px;
   display: inline-block;
   vertical-align: top;
   width: 220px;  
   margin: 0.5em;
   margin-left: 0;
+  border-radius: 3px;
 }
 
 .list + .list {
@@ -147,18 +163,22 @@ a {
 .card {
   margin: 2px;
   background-color: $BG2;
+  padding: 0 0.6em;
 }
 
 .card--placeholder { 
   @extend .card;
   height: 25px; 
   line-height: 1.2em; 
-  border: 1px solid black;
+  border-radius: 3px;
+  background: $card-placeholder;
 }
 
 .card:hover {
-  box-shadow: 0px 0px 1px 0px $Shadow;
- }
+  border-radius: 3px;
+  background: $card-hover-bg;
+  cursor: pointer;
+}
 
 .cards {
   list-style: none;
