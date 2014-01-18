@@ -14,6 +14,8 @@ module Api::V1
 
     def create
       params[:card][:cardinality] ||= 0
+      # TODO: do this in the model.
+
       @card = Card.new(params[:card])
       if @card.save
         render 'cards/show'

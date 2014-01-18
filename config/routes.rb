@@ -8,9 +8,8 @@ Progress::Application.routes.draw do
 
   get '/login' => 'sessions#new', as: :login
   get '/guest_login' => 'sessions#guest', as: :guest_login
+  # TODO: make this a delete request.
   get '/logout' => 'sessions#destroy', as: :logout
-
-
 
   namespace 'api' do
     namespace 'v1' do

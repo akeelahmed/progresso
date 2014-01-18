@@ -19,6 +19,7 @@ class List < ActiveRecord::Base
     value_string = values.join(', ')
     list_id = self.id
 
+    # TODO: Write explanation.
     List.connection.execute(<<-SQL)
       UPDATE
         cards AS l
