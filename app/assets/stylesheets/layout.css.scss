@@ -23,23 +23,25 @@
 #C6F9FF
 #FFD1C7
 */
-$Dark: #2B2B29;
-$Light: #FFF;
-$AlmostLight: #FAFAFA;
-$HighlightBright: #89EBFF;
-$HighlightDark: #172bae;
 
-$BG1: $AlmostLight;
-$BG2: $Light;
-$Color: $HighlightBright;
-$Text: $Dark;
+$Color1: #F8FFD4;
+$Color2: #C6F9FF;
+$White: #F4E8FF;
+$Blacklight: darken($White, 80%);
+$Blackdark: darken($White, 90%);
+
 $Shadow: #AAA;
 
-$body-bg: $BG1;
-$card-hover-bg: darken($BG2, 5%);
-$card-placeholder: darken($BG2, 15%);
-$lists-bg: lighten($HighlightDark, 50%);
+$body-bg: lighten($Color2, 20%);
+$lists-bg: $Color2;
+$list-bg: lighten($Color2, 10%);
+$card-bg: lighten($Color2, 20%);
 
+$card-hover-bg: darken($card-bg, 5%);
+$card-placeholder: darken($card-bg, 30%);
+
+$text: $Blacklight; 
+$text-dark: $Blackdark;
 
 /* #Fonts
 ================================================== */
@@ -64,17 +66,17 @@ h1, h2, h3, h4, h5, h6 {
 /* #Site Styles
 ================================================== */
 body {
-  color: $Text;
+  color: $text;
   background-color: $body-bg;
   margin: 0;
 }
 
 a {
-  color: $Text;
+  color: $text;
 }
 
 a:hover {
-  color: darken($Text, 10%);
+  color: $text-dark
 }
 
 /* #Page Styles
@@ -109,7 +111,7 @@ a:hover {
   letter-spacing: 0.02em;
   font-size: 1.6em;
   font-weight: bold;
-  background-color: $BG1;
+  background-color: $body-bg;
 }
 
 .board__lists-area {
@@ -142,7 +144,7 @@ a:hover {
 }
 
 .list {
-  background-color: $BG2;
+  background-color: $list-bg;
   padding: 12px;
   display: inline-block;
   vertical-align: top;
@@ -162,8 +164,12 @@ a:hover {
 
 .card {
   margin: 2px;
-  background-color: $BG2;
+  background-color: $card-bg;
   padding: 0 0.6em;
+}
+
+.card--dragged {
+  box-shadow: 3px 0 10px -4px $Shadow;
 }
 
 .card--placeholder { 
