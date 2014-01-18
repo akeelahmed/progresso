@@ -29,7 +29,7 @@ module Api::V1
       if @card.update_attributes(params[:card])
         render 'cards/show'
       else
-        render json: @card.errors.full_messages
+        render json: @card.errors.full_messages, status: 422
       end
     end
 
