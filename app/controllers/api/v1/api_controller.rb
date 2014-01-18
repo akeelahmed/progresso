@@ -4,7 +4,7 @@ module Api::V1
 
     def require_login
       unless logged_in?
-        render :json => {message: "You're not authorized."}, status: :unauthorized
+        render :json => { message: "You're not authorized." }, status: :unauthorized
       end
     end
   end
