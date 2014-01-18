@@ -54,7 +54,8 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
         this.$('.cards').sortable({
             connectWith: '.cards',
             items: '.card',
-            placeholder: 'card--placeholder'
+            placeholder: 'card--placeholder',
+            activeClass: 'card--dragged'
         }).disableSelection();
 
         return this;
