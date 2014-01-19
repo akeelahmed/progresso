@@ -9,11 +9,17 @@ PRO.Views.BoardNew = Backbone.View.extend({
         "blur input": "save",
     },
 
+    initialize: function(options) {
+        this.onClose = options.onClose;
+    },
+
     handleKey: function(event) {
+        // TODO: make constants 13 = enter, 27 = esc.
         if (event.keyCode === 13) {
             this.save();
         } else if (event.keyCode === 27) {
-            this.$el.trigger('close');
+            // TODO: instead trigger close event on view (not $el)
+            this.onClose();
         }
     },
 
@@ -21,17 +27,14 @@ PRO.Views.BoardNew = Backbone.View.extend({
         var that = this;
         var name = this.$('#board-name').val();
         if (name.length === 0) {
-            this.$el.trigger('close');
+            this.onClose();
             return;
             //TODO Refactor to remove weirdness of error checking here.
         }
 
         this.model.save(
             { name: name },
-            { success: function () {
-                that.$el.trigger('close');
-              }
-            }
+            { success: that.onClose }
         );
     },
 

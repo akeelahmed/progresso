@@ -5,22 +5,32 @@ PRO.Views.BoardIndex = Backbone.View.extend({
     id: 'boards',
 
     events: {
-        'click .boards__board--new__open-button': 'openNewView',
-        'close .boards__board--new': 'closeNewView',
+        'click .boards__board--new__open-button': 'openNewView'
+    },
+
+    initialize: function(options) {
+        this.listenTo(this.collection, 'sync', this.render);
     },
 
     openNewView: function() {
+        if (this._newBoardView) return;
+
         var newBoard = new PRO.Models.Board();
-        this._newBoardView = new PRO.Views.BoardNew({ model: newBoard });
+        this._newBoardView = new PRO.Views.BoardNew({
+            model: newBoard,
+            onClose: this.closeNewView.bind(this)
+        });
         this.$('.boards__board--new').html(this._newBoardView.render().$el);
-        this.$('#board-name').focus();
+        this._newBoardView.$('#board-name').focus();
     },
 
     closeNewView: function () {
         var that = this;
+        // TODO: is this fetch necessary?
         this.collection.fetch({
             success: function () {
                 that._newBoardView && that._newBoardView.remove();
+                delete that._newBoardView;
                 that.render();
             }
         });
