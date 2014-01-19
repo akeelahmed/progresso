@@ -3,10 +3,12 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
     tagName: 'div',
     className: 'board',
     id: 'board',
+
     // Necessitated by ParentView superclass.
     children: function() {
         return this.model.get('lists');
     },
+
     childViewClass: function() {
         return PRO.Views.ListShow;
     },
