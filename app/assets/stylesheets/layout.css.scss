@@ -24,18 +24,23 @@
 #FFD1C7
 */
 
-$Color1: #F8FFD4;
-$Color2: #C6F9FF;
+/* Trello Colors
+#23719F
+#dbdbdb
+*/
+
+$Color1: #dbdbdb;
+$Color2: #23719F;
 $White: #F4E8FF;
 $Blacklight: darken($White, 80%);
 $Blackdark: darken($White, 90%);
 
 $Shadow: #AAA;
 
-$body-bg: lighten($Color2, 20%);
+$body-bg: $Color2;
 $lists-bg: $Color2;
-$list-bg: lighten($Color2, 10%);
-$card-bg: lighten($Color2, 20%);
+$list-bg: $Color1;
+$card-bg: lighten($Color1, 20%);
 
 $card-hover-bg: darken($card-bg, 5%);
 $card-placeholder: darken($card-bg, 30%);

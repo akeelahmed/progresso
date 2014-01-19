@@ -94,7 +94,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
 
         this._newListView = new PRO.Views.ListNew({ model: newList });
         this.$('.list--new').html(this._newListView.render().$el);
-        this.$('#list-name').focus();
+        this._newListView.$('#list-name').focus();
     },
 
     closeNewView: function() {
