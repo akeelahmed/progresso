@@ -1,5 +1,5 @@
 PRO.Views.ParentView = Backbone.View.extend({
-    // View with a bunch of children.
+    // View with children.
     // The children attribute should be a collection.
     // Also needs a childViewClass.
 
@@ -16,6 +16,7 @@ PRO.Views.ParentView = Backbone.View.extend({
         this._removeAllChildren();
         var view = this.childViewClass();
 
+        // TODO: Consider unwrapping the childViews attr.
         this._childViews = _(this.children().map(
             function(child) {
                 return new view({ model: child });
