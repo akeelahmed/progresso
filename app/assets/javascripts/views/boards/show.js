@@ -9,24 +9,6 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         'close .list--new': 'closeNewView',
         'sortstop #lists': 'resetCardinalities',
         'sortreceive #lists': 'moveItem',
-        'click .board__name': 'openEditView',
-        'close .board__name': 'closeEditView'
-    },
-
-    openEditView: function () {
-        this._editView = new PRO.Views.BoardEdit({ model: this.model });
-        //TODO make sure to add _editView to children for clean up.
-        this.$('.board__name').html(this._editView.render().$el);
-        this.$('.board__name input').focus();
-    },
-
-    closeEditView: function () {
-        this._editView.remove();
-        this._editView = undefined;
-        this.$('.board__name').html(
-            $("<h1 class=\"board__name__text\">")
-                .html(this.model.escape('name'))
-        );
     },
 
     resetCardinalities: function () {
@@ -84,6 +66,9 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
             items: '.list',
             handle: '.lists__list__name'
         }).disableSelection();
+        var nameView = new PRO.Views.BoardName({ model: this.model });
+        this.adopt(nameView);
+        this.$('.board__name').replaceWith(nameView.render().$el);
         return this;
     },
 
