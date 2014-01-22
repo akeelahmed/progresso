@@ -11,7 +11,7 @@ PRO.Collections.Boards = Backbone.Collection.extend({
             model.fetch({
                 success: function() {
                     options.success();
-                    this.add(model);
+                    that.add(model);
                 }
             });
         }
