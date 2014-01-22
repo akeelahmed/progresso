@@ -1,38 +1,29 @@
 PRO.Views.ParentView = Backbone.View.extend({
-    // View with children.
-    // The children attribute should be a collection.
-    // Also needs a childViewClass.
+    adopt: function(view) {
+        if (!this.hasOwnProperty('_children')) this._children = {};
+        if (!this.hasOwnProperty('_indexByModel')) this._indexByModel = {};
+
+        this._children[view.cid] = view;
+        if (view.model) this._indexByModel[view.model.cid] = view.cid;
+    },
+
+    orphan: function(child) {
+        delete this._children[child.cid];
+        if (child.model) delete this._indexByModel[child.model.cid];
+        child.remove();
+    },
 
     remove: function () {
-        Backbone.View.prototype.remove.apply(this, arguments);
-        this._removeAllChildren();
+        this.orphanAll();
+        Backbone.View.prototype.remove.apply(this);
     },
 
-    _buildChildViews: function () {
-        if (!(this.children && this.childViewClass)) {
-            throw "Error: Need children and childViewClass attributes.";
-        }
-
-        this._removeAllChildren();
-        var view = this.childViewClass();
-
-        // TODO: Consider unwrapping the childViews attr.
-        this._childViews = _(this.children().map(
-            function(child) {
-                return new view({ model: child });
-            }
-        ));
-        return this._childViews;
+    findChildByModel: function(model){
+        var viewCid = this._indexByModel[model.cid];
+        return this.findByCid(viewCid);
     },
 
-    _removeAllChildren: function () {
-        if (!this._childViews) return;
-        this._childViews.each(
-            function(view) {
-                view.remove();
-            }
-        );
-        this._childViews = [];
-        return this;
+    orphanAll: function () {
+        _(this._children).each(this.orphan);
     },
 });
