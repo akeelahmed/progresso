@@ -4,15 +4,6 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
     className: 'board',
     id: 'board',
 
-    // Necessitated by ParentView superclass.
-    children: function() {
-        return this.model.get('lists');
-    },
-
-    childViewClass: function() {
-        return PRO.Views.ListShow;
-    },
-
     events: {
         'click .list--new__button': 'openNewView',
         'close .list--new': 'closeNewView',
@@ -61,21 +52,32 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         $(e.target).trigger('sortstop');
     },
 
+
+
     renderLists: function() {
-        var $lists = this.$('#lists').empty();
-        this._buildChildViews().each(
-            function(listView) {
-                $lists.append(listView.render().$el);
-            });
+        var that = this;
+
+        var $lists = $('<ul class="lists" id="lists"></ul>');
+
+        var lists = this.model.get('lists');
+        lists.each(function(list){
+            var listView = new PRO.Views.ListShow({ model: list });
+            that.adopt(listView);
+            $lists.append(listView.render().$el);
+        });
+
         var $newListButton = $('<li class="list--new">')
             .append(
                 $('<span class="list--new__button">new list</span>')
             );
 
         $lists.append($newListButton);
+
+        this.$('#lists').replaceWith($lists);
     },
 
     render: function() {
+        this.orphanAll();
         this.$el.html(this.template({ model: this.model }));
         this.renderLists();
         this.$("#lists").sortable({
