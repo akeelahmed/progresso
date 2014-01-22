@@ -5,7 +5,7 @@ class List < ActiveRecord::Base
   has_many :cards
 
   def ordered_card_ids=(ids)
-    set_cardinalities(ids)
+    set_cardinalities(ids) if ids
   end
 
   def set_cardinalities(ordered_ids)
