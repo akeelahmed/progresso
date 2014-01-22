@@ -21,8 +21,14 @@ PRO.Routers.Boards = Backbone.Router.extend({
     },
 
     show: function (id) {
-        var board = PRO.Store.boards.getOrFetch(id);
-        var view = new PRO.Views.BoardShow({ model: board });
-        this._swap(view);
+        var that = this;
+        var board = PRO.Store.boards.getOrFetch(id, {
+            success: function () {
+                var view = new PRO.Views.BoardShow({ model: board });
+                that._swap(view);
+            }
+        });
+
+
     },
 });

@@ -3,13 +3,14 @@ PRO.Collections.Boards = Backbone.Collection.extend({
     model: PRO.Models.Board,
     comparator: 'id',
 
-    getOrFetch: function(id) {
-        // TODO: Allow user to pass callback here.
+    getOrFetch: function(id, options) {
+        var that = this;
         var model;
         if (!(model = this.get(id))) {
             model = new this.model({ id: id });
             model.fetch({
                 success: function() {
+                    options.success();
                     this.add(model);
                 }
             });
