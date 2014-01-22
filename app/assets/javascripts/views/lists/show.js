@@ -40,13 +40,29 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
         this.$('.lists__list__name').html(this.model.escape('name'));
     },
 
-    render: function () {
-        this.$el.html(this.template({ model: this.model }));
-        this.$el.data('id', this.model.id);
-        var $cards = this.$('.cards').empty();
-        this._buildChildViews().each(function(cardView) {
+    renderCards: function() {
+        var that = this;
+
+        var $cards = $('<ul class="cards">')
+                      .attr('data-id', this.model.escape('id'));
+
+        var cards = this.model.get('cards');
+
+        cards.each(function(card) {
+            var cardView = new PRO.Views.CardShow({ model: card});
+            that.adopt(cardView);
             $cards.append(cardView.render().$el);
         });
+
+        this.$('.cards').replaceWith($cards);
+    },
+
+    render: function () {
+        this.orphanAll();
+        this.$el.html(this.template({ model: this.model }));
+        this.renderCards();
+        this.$el.data('id', this.model.id);
+
         var $newCardBtn = $('<div class="new-card-button"></div>')
             .html('<span class="new-card-button__button">&#10010;</span>');
 
