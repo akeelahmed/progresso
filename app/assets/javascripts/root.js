@@ -12,4 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require login_page
+//= require jquery.ui.sortable
+//= require underscore
+//= require backbone
+//= require progress
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers

@@ -34,8 +34,6 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         $(e.target).trigger('sortstop');
     },
 
-
-
     renderLists: function() {
         var that = this;
 
