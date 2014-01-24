@@ -16,8 +16,8 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         var ids = $.map($('#lists').children(), function(list) {
             return $(list).data('id');
         });
-        this.model.set('ordered_list_ids', ids);
-        this.model.save();
+
+        this.model.save({ ordered_list_ids: ids });
     },
 
     moveItem: function (e, ui) {
