@@ -5,8 +5,6 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
     id: 'board',
 
     events: {
-        'click .list--new__button': 'openNewView',
-        'close .list--new': 'closeNewView',
         'sortstop #lists': 'resetCardinalities',
         'sortreceive #lists': 'moveItem',
     },
@@ -40,11 +38,17 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         var $lists = $('<ul class="lists" id="lists"></ul>');
 
         var lists = this.model.get('lists');
+
+        var listViews = [];
+
         lists.each(function(list){
             var listView = new PRO.Views.ListShow({ model: list });
             that.adopt(listView);
+            listViews.push(listView);
             $lists.append(listView.render().$el);
         });
+
+        this._listViews = listViews;
 
         var $newListButton = $('<li class="list--new">')
             .append(
@@ -54,56 +58,27 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         $lists.append($newListButton);
 
         this.$('#lists').replaceWith($lists);
-    },
-
-    render: function() {
-        this.orphanAll();
-        this.$el.html(this.template({ model: this.model }));
-        this.renderLists();
         this.$("#lists").sortable({
             items: '.list',
             handle: '.lists__list__name'
         }).disableSelection();
+    },
+
+    render: function() {
+        this.orphanAll();
+        delete this._listViews;
+
+        this.$el.html(this.template({ model: this.model }));
+
+        this.renderLists();
+
         var nameView = new PRO.Views.BoardName({ model: this.model });
         this.adopt(nameView);
         this.$('.board__name').replaceWith(nameView.render().$el);
+
+        var newListView = new PRO.Views.ListNew({ collection: this.model.get('lists') });
+        this.adopt(newListView);
+        this.$('.list--new').replaceWith(newListView.render().$el);
         return this;
-    },
-
-    openNewView: function (event) {
-        var lists = this.model.get('lists');
-        var newList = new PRO.Models.List({
-            board_id: this.model.id,
-            cardinality: (_.max(lists.pluck('cardinality')) + 1),
-        });
-
-        this._newListView = new PRO.Views.ListNew({ model: newList });
-        this.$('.list--new').html(this._newListView.render().$el);
-        this._newListView.$('#list-name').focus();
-    },
-
-    closeNewView: function() {
-        var that = this;
-        this.model.fetch({
-            success: function appendNewList(model) {
-                var $lists = that.$('#lists');
-
-                var viewClass = that.childViewClass();
-                var newView = new viewClass({
-                    model: that._newListView.model
-                });
-                that._childViews.push(newView);
-
-                that._newListView.remove();
-                $lists.append(newView.render().$el);
-
-                that.$('.list--new').remove();
-                var $newListButton = $('<li class="list--new">')
-                    .html(
-                        $('<span class="list--new__button">new list</span>')
-                    );
-                $lists.append($newListButton);
-            }
-        });
     },
 });

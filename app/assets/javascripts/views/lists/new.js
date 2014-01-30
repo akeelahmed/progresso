@@ -1,25 +1,57 @@
 PRO.Views.ListNew = Backbone.View.extend({
-    template: JST['lists/new'],
     tagName: 'div',
-    className: 'lists__list--new__form',
-    id: 'new-list-form',
+    className: 'list--new',
+    template: JST['lists/new'],
 
     events: {
-        'keyup input': '_handleKey',
-        'blur input': 'save',
+        'click .list--new__button': 'toggleState',
+        'keyup input': 'handleKey',
+        'blur input': 'saveAndToggleState',
     },
 
-    _handleKey: function(event) {
-        if (event.keyCode === 13) {
-            this.save();
-        } else if (event.keyCode === 27) {
-            this.$el.trigger('close');
+    toggleState: function() {
+        this._active = (this._active ? false : true);
+        this.render();
+    },
+
+    saveAndToggleState: function() {
+        var that = this;
+        if (!this._active) return;
+        var name = this.$('#list-name').val();
+        var newList = new PRO.Models.List({
+            name: name,
+            board_id: this.collection.first().id,
+            cardinality: 100
+        });
+
+        newList.save( {}, {
+            success: function() {
+                that.toggleState();
+                that.collection.add(newList);
+                console.log('saved');
+            }
+        });
+    },
+
+
+    handleKey: function(event) {
+        keys = {
+            enter: 13,
+            escape: 27
+        };
+
+        if (event.keyCode === keys.enter) {
+            this.saveAndToggleState();
+        } else if (event.keyCode === keys.escape) {
+            this.toggleState();
         }
     },
+
 
     save: function() {
         var that = this;
         var name = this.$('#list-name').val();
+        debugger;
         if (name.length === 0) {
             this.$el.trigger('close');
             return;
@@ -36,7 +68,15 @@ PRO.Views.ListNew = Backbone.View.extend({
     },
 
     render: function() {
-        this.$el.html(this.template({ model: this.model }));
+        if (this._active) {
+            this.$el.html(this.template({
+                model: new PRO.Models.List()
+            }))
+            // render text field
+        } else {
+            this.$el.html('<span class="list--new__button">new list!</span>')
+        }
+        console.log('rendering')
         return this;
     }
 });
