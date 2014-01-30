@@ -1,8 +1,16 @@
 class List < ActiveRecord::Base
   attr_accessible :board_id, :cardinality, :name, :ordered_card_ids
 
+  validates :board_id, presence: true
+
+  before_create :ensure_cardinality
+
   belongs_to :board
   has_many :cards
+
+  def ensure_cardinality
+    self.cardinality = board.lists.pluck(:cardinality).max + 1
+  end
 
   def ordered_card_ids=(ids)
     set_cardinalities(ids) if ids

@@ -20,8 +20,7 @@ PRO.Views.ListNew = Backbone.View.extend({
         var name = this.$('#list-name').val();
         var newList = new PRO.Models.List({
             name: name,
-            board_id: this.collection.first().id,
-            cardinality: 100
+            board_id: this.collection.first().get('board_id'),
         });
 
         newList.save( {}, {

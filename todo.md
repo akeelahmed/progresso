@@ -23,6 +23,7 @@ where c.id = l.id and l.board_id = ?;
 - [x] When dropping card/list on board, just save the model with
       the special `ordered_child_ids` attribute.
 - [ ] New List should just be a plus button.
+- [ ] New List should be self contained view that handles open/close events.
 - [ ] Draggable area should be more clear.
 - [ ] Droppable area should be more clear.
 - [ ] Move 'New Card' and 'New List' items out of their `<ul>`s so they cant be
