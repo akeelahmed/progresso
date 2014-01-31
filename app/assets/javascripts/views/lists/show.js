@@ -13,8 +13,8 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
     events: {
         'click .new-card-button': 'openNewView',
         'close .cards__new-card': 'closeNewView',
-        'click .lists__list__name': 'openEditView',
-        'close .lists__list__name': 'closeEditView',
+        'click .list__name': 'openEditView',
+        'close .list__name': 'closeEditView',
         'sortstop .cards': 'resetCardinalities',
     },
 
@@ -30,14 +30,14 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
 
     openEditView: function () {
         this._editListView = new PRO.Views.ListEdit({ model: this.model });
-        this.$('.lists__list__name').html(this._editListView.render().$el);
-        this.$('.lists__list__name input').focus();
+        this.$('.list__name').html(this._editListView.render().$el);
+        this.$('.list__name input').focus();
     },
 
     closeEditView: function () {
         this._editListView.remove();
         this._editListView = undefined;
-        this.$('.lists__list__name').html(this.model.escape('name'));
+        this.$('.list__name').html(this.model.escape('name'));
     },
 
     renderCards: function() {

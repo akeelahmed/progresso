@@ -87,8 +87,7 @@ a:hover {
 /* #Page Styles
 ================================================== */
 .board {
-   margin: 24px;
-   padding: 12px;
+   margin-top: 24px;
 }
 
 .board__name {
@@ -143,7 +142,7 @@ a:hover {
   list-style: none;
 }
 
-.lists__list__name {
+.list__name {
   font-family: $sans;
   font-weight: bold;
 }
@@ -210,7 +209,7 @@ input.card-body {
   font-style: italic;
 }
 
-.lists__list__name__form {
+.list__name__form {
   margin: 0;
   padding: 0;
   outline: none;

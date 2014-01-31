@@ -9,7 +9,8 @@ class List < ActiveRecord::Base
   has_many :cards
 
   def ensure_cardinality
-    self.cardinality = board.lists.pluck(:cardinality).max + 1
+    max_cardinality = board.lists.pluck(:cardinality).max || 0
+    self.cardinality = max_cardinality + 1
   end
 
   def ordered_card_ids=(ids)

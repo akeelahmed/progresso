@@ -1,7 +1,7 @@
 PRO.Views.ListEdit = Backbone.View.extend({
     template: JST['lists/edit'],
     tagname: 'div',
-    className: 'lists__list__name__form',
+    className: 'list__name__form',
     events: {
         'keyup input': '_handleKey',
         'blur input': 'save',
