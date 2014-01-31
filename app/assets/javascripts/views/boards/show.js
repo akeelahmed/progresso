@@ -9,6 +9,11 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         'sortreceive #lists': 'moveItem',
     },
 
+    initialize: function () {
+        var lists = this.model.get('lists');
+        this.listenTo(lists, 'add', this.handleAddedList);
+    },
+
     resetCardinalities: function () {
         // Get list of list ids in order they appear.
         var ids = $.map($('#lists').children(), function(list) {
@@ -50,18 +55,21 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
 
         this._listViews = listViews;
 
-        var $newListButton = $('<li class="list--new">')
-            .append(
-                $('<span class="list--new__button">new list</span>')
-            );
-
-        $lists.append($newListButton);
-
         this.$('#lists').replaceWith($lists);
         this.$("#lists").sortable({
             items: '.list',
             handle: '.lists__list__name'
         }).disableSelection();
+    },
+
+    handleAddedList: function() {
+        var lists = this.model.get('lists');
+        var newList = lists.last();
+
+        var listView = new PRO.Views.ListShow({ model: newList });
+        this.adopt(listView);
+        this._listViews.push(listView);
+        this.$('#list--new').before(listView.render().$el);
     },
 
     render: function() {
@@ -78,7 +86,7 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
 
         var newListView = new PRO.Views.ListNew({ collection: this.model.get('lists') });
         this.adopt(newListView);
-        this.$('.list--new').replaceWith(newListView.render().$el);
+        this.$('#lists').append(newListView.render().$el);
         return this;
     },
 });

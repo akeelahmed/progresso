@@ -2,6 +2,7 @@ PRO.Views.ListNew = Backbone.View.extend({
     tagName: 'div',
     className: 'list--new',
     template: JST['lists/new'],
+    id: 'list--new',
 
     events: {
         'click .list--new__button': 'toggleState',
@@ -70,12 +71,12 @@ PRO.Views.ListNew = Backbone.View.extend({
         if (this._active) {
             this.$el.html(this.template({
                 model: new PRO.Models.List()
-            }))
+            }));
             // render text field
         } else {
-            this.$el.html('<span class="list--new__button">new list!</span>')
+            this.$el.html('<span class="list--new__button">new list!</span>');
         }
-        console.log('rendering')
+        console.log('rendering');
         return this;
     }
 });
