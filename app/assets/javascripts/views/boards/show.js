@@ -58,7 +58,8 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         this.$('#lists').replaceWith($lists);
         this.$("#lists").sortable({
             items: '.list',
-            handle: '.list__name'
+            handle: '.list__header',
+            placeholder: '.list__placeholder',
         }).disableSelection();
     },
 

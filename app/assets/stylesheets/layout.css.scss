@@ -53,14 +53,12 @@ $text-dark: $Blackdark;
 //@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
 //@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
 
-$sans: 'PT Sans Narrow', sans-serif;
-$serif: 'PT Serif', serif; 
+$sans: 'Helvetica Neue', sans-serif;
 
 
 body {
-  font-family: $serif;
+  font-family: $sans;
   box-sizing: border-box;
-  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -123,17 +121,6 @@ a:hover {
   background-color: $lists-bg;
 }
 
-.board__lists-area__inset-shadow-mask { 
-  // Cute workaround.
-  position: absolute;
-  top: 0px; left: 0px;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* to make clicks pass through */
-  box-shadow: 3px 0 10px -4px $Shadow inset, 
-             -3px 0 10px -4px $Shadow inset;
-}
-
 .lists {
   padding: 12px;
   margin: 0;
@@ -142,9 +129,17 @@ a:hover {
   list-style: none;
 }
 
+.list_header{
+    cursor: -webkit-grab;
+    cursor: grab;
+    width: 100%
+}
+
 .list__name {
   font-family: $sans;
   font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .list {
@@ -158,6 +153,13 @@ a:hover {
   border-radius: 3px;
 }
 
+.list__placeholder {
+
+  background-color: red;
+  width: 
+}
+
+
 .list + .list {
   margin-left: 0.5em;
 }
@@ -167,9 +169,12 @@ a:hover {
 }
 
 .card {
-  margin: 2px;
+  margin: 3px;
   background-color: $card-bg;
-  padding: 0 0.6em;
+  border-radius: 3px;
+  padding: .2em .6em;
+  font-size: 14px;
+  font-weight: regular;
 }
 
 .card--dragged {
@@ -202,8 +207,8 @@ input.card-body {
   padding: 0;
   outline: none;
   border: none;
-  font-size: 1em;
-  font-family: $serif;
+  font-size: 14px;
+  font-family: $sans;
   box-shadow: none;
   width: 100%;
   font-style: italic;
@@ -214,7 +219,7 @@ input.card-body {
   padding: 0;
   outline: none;
   border: none;
-  font-size: 1em;
+  font-size: 15px;
   font-family: $sans;
   width: 100%;
   font-style: italic;
