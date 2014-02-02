@@ -154,9 +154,9 @@ a:hover {
 }
 
 .list__placeholder {
-
+  @extend .list;
   background-color: red;
-  width: 
+  width: 220px;
 }
 
 
@@ -165,7 +165,7 @@ a:hover {
 }
 
 .list--new {
-  @extend .list
+  @extend .list;
 }
 
 .card {
