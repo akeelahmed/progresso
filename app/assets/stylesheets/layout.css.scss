@@ -130,8 +130,6 @@ a:hover {
 }
 
 .list_header{
-    cursor: -webkit-grab;
-    cursor: grab;
     width: 100%
 }
 
@@ -148,20 +146,23 @@ a:hover {
   display: inline-block;
   vertical-align: top;
   width: 220px;  
-  margin: 0.5em;
-  margin-left: 0;
+  margin: 0 5px;
+  padding: 4px 3px 3px;
+
   border-radius: 3px;
 }
 
-.list__placeholder {
+.list--placeholder {
   @extend .list;
-  background-color: red;
+  background-color: darken($body-bg, 10%);
   width: 220px;
+  height: 100px;
 }
 
-
-.list + .list {
-  margin-left: 0.5em;
+.ui-sortable-helper {
+  -webkit-transform: rotate(4deg);
+  transform: rotate(4deg);
+  box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.3), 0px 0px 1px rgba(0, 0, 0, 0.5);
 }
 
 .list--new {
@@ -172,6 +173,10 @@ a:hover {
   margin: 3px;
   background-color: $card-bg;
   border-radius: 3px;
+  border-bottom: 1px solid #bdbdbd;
+  cursor: pointer;
+  max-width: 300px;
+  min-height: 20px;
   padding: .2em .6em;
   font-size: 14px;
   font-weight: regular;
@@ -212,6 +217,17 @@ input.card-body {
   box-shadow: none;
   width: 100%;
   font-style: italic;
+}
+
+.list__header {
+    cursor: -webkit-grab;
+    cursor: grab;
+    padding: 3px 26px 2px 6px;
+  min-height: 19px;
+}
+
+.new-card-button {
+    cursor: pointer;
 }
 
 .list__name__form {

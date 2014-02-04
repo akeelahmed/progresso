@@ -71,7 +71,7 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
             connectWith: '.cards',
             items: '.card',
             placeholder: 'card--placeholder',
-            activeClass: 'card--dragged'
+            activeClass: 'card--dragged',
         }).disableSelection();
 
         return this;

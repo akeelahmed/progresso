@@ -59,7 +59,10 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         this.$("#lists").sortable({
             items: '.list',
             handle: '.list__header',
-            placeholder: 'list__placeholder',
+            placeholder: 'list--placeholder',
+            activeClass: 'list--dragged',
+            tolerance: "pointer"
+
         }).disableSelection();
     },
 
