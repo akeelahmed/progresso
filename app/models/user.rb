@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
       done_list = List.create!(name: 'Done', board_id: board.id, cardinality: 1)
       Card.create!(completed: false, body: 'Walk Dog', list_id: doing_list.id, cardinality: 0)
       Card.create!(completed: false, body: 'Get Coffee', list_id: doing_list.id, cardinality: 1)
-      Card.create!(completed: true, body: 'Browse Craigslist Gigs', list_id: doing_list.id, cardinality: 2)
+      Card.create!(completed: true, body: 'Floss', list_id: doing_list.id, cardinality: 2)
       Card.create!(completed: true, body: 'Wake Up', list_id: done_list.id, cardinality: 0)
     end
   end
