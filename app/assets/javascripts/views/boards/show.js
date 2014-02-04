@@ -88,7 +88,10 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
         this.adopt(nameView);
         this.$('.board__name').replaceWith(nameView.render().$el);
 
-        var newListView = new PRO.Views.ListNew({ collection: this.model.get('lists') });
+        var newListView = new PRO.Views.ListNew({
+            collection: this.model.get('lists'),
+            boardId: this.model.id
+        });
         this.adopt(newListView);
         this.$('#lists').append(newListView.render().$el);
         return this;

@@ -10,6 +10,10 @@ PRO.Views.ListNew = Backbone.View.extend({
         'blur input': 'saveAndToggleState',
     },
 
+    initialize: function(options) {
+        this.boardId = options.boardId;
+    },
+
     toggleState: function() {
         this._active = (this._active ? false : true);
         this.render();
@@ -21,7 +25,7 @@ PRO.Views.ListNew = Backbone.View.extend({
         var name = this.$('#list-name').val();
         var newList = new PRO.Models.List({
             name: name,
-            board_id: this.collection.first().get('board_id'),
+            board_id: this.boardId
         });
 
         newList.save( {}, {
