@@ -32,7 +32,6 @@ PRO.Views.ListNew = Backbone.View.extend({
             success: function() {
                 that.toggleState();
                 that.collection.add(newList);
-                console.log('saved');
             }
         });
     },
@@ -80,7 +79,6 @@ PRO.Views.ListNew = Backbone.View.extend({
         } else {
             this.$el.html('<span class="list--new__button">new list!</span>');
         }
-        console.log('rendering');
         return this;
     }
 });
