@@ -16,18 +16,6 @@
 
 /* #Colors
 ================================================== */
-/*
-#FFF1DA
-#F4E8FF
-#F8FFD4
-#C6F9FF
-#FFD1C7
-*/
-
-/* Trello Colors
-#23719F
-#dbdbdb
-*/
 
 $Color1: #dbdbdb;
 $Color2: #23719F;
@@ -35,12 +23,10 @@ $White: #F4E8FF;
 $Blacklight: darken($White, 80%);
 $Blackdark: darken($White, 90%);
 
-$Shadow: #AAA;
-
 $body-bg: $Color2;
 $lists-bg: $Color2;
 $list-bg: $Color1;
-$card-bg: lighten($Color1, 20%);
+$card-bg: #FFF;
 
 $card-hover-bg: darken($card-bg, 5%);
 $card-placeholder: darken($card-bg, 30%);
@@ -50,15 +36,11 @@ $text-dark: $Blackdark;
 
 /* #Fonts
 ================================================== */
-//@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
-//@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
-
 $sans: 'Helvetica Neue', sans-serif;
 
 
 body {
   font-family: $sans;
-  box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -69,6 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 /* #Site Styles
 ================================================== */
 body {
+  box-sizing: border-box;
   color: $text;
   background-color: $body-bg;
   margin: 0;
@@ -88,7 +71,30 @@ a:hover {
    margin-top: 24px;
 }
 
-.board__name {
+.boards__board-link {
+  background-color: $lists-bg;
+  padding: 12px;
+  display: inline-block;
+  vertical-align: top;
+  width: 220px;  
+  margin: 0 5px;
+  padding: 4px 3px 3px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.boards__board-link a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #FFF;
+}
+
+.boards {
+  padding: 12px;
+  margin: 0;
+  overflow: auto;
+  white-space: nowrap;
+  list-style: none;
 }
 
 .board__name__text {
@@ -148,7 +154,6 @@ a:hover {
   width: 220px;  
   margin: 0 5px;
   padding: 4px 3px 3px;
-
   border-radius: 3px;
 }
 
@@ -180,10 +185,6 @@ a:hover {
   padding: .2em .6em;
   font-size: 14px;
   font-weight: regular;
-}
-
-.card--dragged {
-  box-shadow: 3px 0 10px -4px $Shadow;
 }
 
 .card--placeholder { 
