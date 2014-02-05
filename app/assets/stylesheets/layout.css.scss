@@ -19,9 +19,10 @@
 
 $Color1: #dbdbdb;
 $Color2: #23719F;
-$White: #F4E8FF;
-$Blacklight: darken($White, 80%);
-$Blackdark: darken($White, 90%);
+$White: #FFF;
+
+$Blackdark: #393939;
+$Blacklight: lighten($Blackdark, 5%);
 
 $body-bg: $Color2;
 $lists-bg: $Color2;
@@ -50,11 +51,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* #Site Styles
 ================================================== */
-body {
+html, body {
   box-sizing: border-box;
   color: $text;
-  background-color: $body-bg;
+  background-color: $White;
   margin: 0;
+  padding: 0.1px;
+  height: 100%;
 }
 
 a {
@@ -65,15 +68,27 @@ a:hover {
   color: $text-dark
 }
 
+.container {
+  height: 100%;
+}
+
 /* #Page Styles
 ================================================== */
+.boards-index {
+  background-color: $White;
+}
+
 .board {
-   margin-top: 24px;
+   padding-top: 24px;
+   background-color: $lists-bg;
+   height: 100%;
 }
 
 .boards__board-link {
+  position: relative;
   background-color: $lists-bg;
   padding: 12px;
+  height: 90px;
   display: inline-block;
   vertical-align: top;
   width: 220px;  
@@ -81,12 +96,23 @@ a:hover {
   padding: 4px 3px 3px;
   border-radius: 3px;
   cursor: pointer;
+  &:hover {
+    background-color: darken($lists-bg, 5%);
+  }
 }
 
 .boards__board-link a {
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  color: #f6f6f6;
+  font-size: 16px;
+  line-height: 22px;
   text-decoration: none;
-  font-weight: bold;
-  color: #FFF;
+  font-weight: 600;
+  padding: 8px 12px;
 }
 
 .boards {
@@ -124,7 +150,6 @@ a:hover {
 
 .board__lists-area {
   position: relative;
-  background-color: $lists-bg;
 }
 
 .lists {
@@ -189,7 +214,7 @@ a:hover {
 
 .card--placeholder { 
   @extend .card;
-  height: 25px; 
+  height: 20px; 
   line-height: 1.2em; 
   border-radius: 3px;
   background: $card-placeholder;

@@ -1,8 +1,6 @@
 PRO.Views.BoardIndex = Backbone.View.extend({
     template: JST['boards/index'],
-    tagName: 'ul',
-    className: 'boards',
-    id: 'boards',
+    className: 'boards-index',
 
     events: {
         'click .boards__board--new__open-button': 'openNewView'
