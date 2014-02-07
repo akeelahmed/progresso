@@ -101,7 +101,11 @@ a:hover {
   }
 }
 
-.boards__board-link a {
+.boards__board-link--new {
+  @extend .boards__board-link
+}
+
+.boards__board-link__text {
   position:absolute; 
   width:100%;
   height:100%;
@@ -114,6 +118,11 @@ a:hover {
   font-weight: 600;
   padding: 8px 12px;
 }
+
+.boards__board-link--new__text {
+  @extend .boards__board-link__text
+}
+
 
 .boards {
   padding: 12px;

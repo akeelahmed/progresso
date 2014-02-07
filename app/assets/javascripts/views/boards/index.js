@@ -3,7 +3,7 @@ PRO.Views.BoardIndex = Backbone.View.extend({
     className: 'boards-index',
 
     events: {
-        'click .boards__board--new__open-button': 'openNewView'
+        'click .boards__board-link--new': 'openNewView'
     },
 
     initialize: function(options) {

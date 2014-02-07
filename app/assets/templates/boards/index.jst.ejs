@@ -1,13 +1,13 @@
 <ul id="boards" class="boards">
 <% this.collection.each(function(model) { %>
    <li class="boards__board-link">
-       <a href="#boards/<%= model.id %>">
+       <a class="boards__board-link__text" href="#boards/<%= model.id %>">
           <%= model.get('name') %>
        </a>
    </li>
 <% }) %>
-<li class="boards__board--new">
-    <span class="boards__board--new__open-button">
+<li class="boards__board-link--new">
+    <span class="boards__board-link--new__text">
         Create New Board!
     </span>
 </li>
