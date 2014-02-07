@@ -277,6 +277,94 @@ input.card-body {
   font-weight: bold;
 }
 
+.login-page {
+  background-color: #e6e6e6;
+  padding-top: 10px;
+}
+
+.brand-header {
+  min-width: 270px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.brand-header__name {
+  margin: 0;
+  padding: 0;
+  color: darken($Color2, 0%);
+  font-weight: 100;
+  font-style: italic;
+  font-size: 3em;
+}
+
+.brand-footer {
+  @extend .brand-header
+}
+
+.brand-footer__description {
+  color: darken($Color2, 10%);
+  font-weight: 300;
+  a {
+    color: darken($Color2, 10%);
+    &:hover {
+      color: darken($Color2, 15%);
+    }
+  }
+}
+
+.login-panel {
+  width: 30%;
+  min-width: 270px;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #bfbfbf;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.login-panel__section {
+  font-size: 18px;
+  line-height: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px
+}
+
+.login-panel__section--or{
+  @extend .login-panel__section;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.login-panel__section--login {
+  @extend .login-panel__section;
+  text-align: left;
+}
+
+.login-panel__section--button {
+  @extend .login-panel__section;
+  width: 100%;
+  a {
+  background: linear-gradient(to bottom, #24a828 0, #1b7e1e 100%);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  width: 60%;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 7px 20px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 14px;
+  &:hover {
+    background: linear-gradient(to bottom, #1f9323 0, #166919 100%);
+  }
+}
+}
+
 /* #Media Queries
 ================================================== */
 
