@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
     user.name = 'Christopher Guest'
     user.email = 'chris.guest@example.com'
     user.username = 'CBoy'
-    user.gravatar = '205e460b479e2e5b48aec07710c08d50'
+    user.gravatar = 'fbbd6b5524c2e0ee1bb0719a626d8330'
     user.session_token = User.generate_session_token
 
     user.save!

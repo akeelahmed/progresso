@@ -277,37 +277,76 @@ input.card-body {
   font-weight: bold;
 }
 
+.header {
+  position: relative;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0, rgba(0,0,0,0.15) 100%);
+  padding: 5px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.header__section {
+  position: absolute;
+  top: 0;
+  display: block;
+}
+
+.header__boards-menu {
+  @extend .header__section;
+}
+
+.header__brand {
+  @extend .header__section;
+  width: 99%;
+  text-align: center;
+}
+.header__account-menu {
+  @extend .header__section;
+  right: 0;
+}
+
 .login-page {
   background-color: #e6e6e6;
-  padding-top: 10px;
+  padding-top: 70px;
 }
 
 .brand-header {
   min-width: 270px;
   margin: 0 auto;
   text-align: center;
+  padding-bottom: 10px;
+  color: darken($Color2, 0%);
 }
 
 .brand-header__name {
   margin: 0;
   padding: 0;
-  color: darken($Color2, 0%);
   font-weight: 100;
   font-style: italic;
   font-size: 3em;
+  a {
+    color: darken($Color2, 0%);  
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+      color: darken($Color2, 5%)
+    }
+  }
 }
 
 .brand-footer {
-  @extend .brand-header
+  @extend .brand-header;
 }
 
 .brand-footer__description {
-  color: darken($Color2, 10%);
+  color: darken(#e6e6e6, 30%);
   font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
   a {
-    color: darken($Color2, 10%);
+    color: darken(#e6e6e6, 40%);
     &:hover {
-      color: darken($Color2, 15%);
+      color: darken($Color2, 50%);
     }
   }
 }
