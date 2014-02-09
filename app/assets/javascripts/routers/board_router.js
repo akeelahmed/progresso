@@ -9,6 +9,7 @@ PRO.Routers.Boards = Backbone.Router.extend({
     },
 
     _swap: function(newView) {
+        $('body').removeClass();
         this._currentView && this._currentView.remove();
         this._currentView = newView;
         this.$content.html(newView.render().$el);
@@ -26,6 +27,8 @@ PRO.Routers.Boards = Backbone.Router.extend({
             success: function () {
                 var view = new PRO.Views.BoardShow({ model: board });
                 that._swap(view);
+                $('body').addClass('board-view');
+
             }
         });
 
