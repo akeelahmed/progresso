@@ -70,6 +70,12 @@ a:hover {
 
 .container {
   height: 100%;
+  padding-top: 30px;
+  
+}
+
+.board-view .container {
+  background-color: $lists-bg;
 }
 
 /* #Page Styles
@@ -79,7 +85,6 @@ a:hover {
 }
 
 .board {
-   padding-top: 24px;
    background-color: $lists-bg;
    height: 100%;
 }
@@ -281,13 +286,11 @@ input.card-body {
   position: absolute;
   left:0;
   right: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0, rgba(0,0,0,0.15) 100%);
+  background: linear-gradient(to bottom, #27709b 0, #24688f 100%);
   padding: 5px;
   height: 30px;
   overflow: hidden;
 }
-
-.
 
 .header__section {
   position: absolute;
