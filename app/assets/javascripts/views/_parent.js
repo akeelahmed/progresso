@@ -14,7 +14,6 @@ PRO.Views.ParentView = Backbone.View.extend({
     },
 
     remove: function () {
-        debugger
         this.orphanAll();
         Backbone.View.prototype.remove.apply(this);
     },
