@@ -82,12 +82,21 @@ a:hover {
 ================================================== */
 .boards-index {
   background-color: $White;
+  padding-top: 50px;
 }
 
 .board {
    background-color: $lists-bg;
    height: 100%;
 }
+
+.boards__header {
+  
+  color: #333;
+  margin: 0 0 14px 55px;
+  font-size: 16px;
+}
+
 
 .boards__board-link {
   position: relative;
@@ -128,19 +137,21 @@ a:hover {
   @extend .boards__board-link__text
 }
 
-
 .boards {
-  padding: 12px;
+  padding: 0 0 0 50px;
   margin: 0;
   overflow: auto;
   white-space: nowrap;
   list-style: none;
 }
 
+.board__name {
+  padding: 10px;
+}
+
 .board__name__text {
   margin: 0;
-  padding: 0 12px;
-  padding-left: 12px;
+  padding-left: 6px;
   font-weight: bold;
   letter-spacing: 0.02em;
   font-size: 1.6em;
@@ -292,52 +303,66 @@ input.card-body {
   overflow: hidden;
 }
 
-.header__section {
-  position: absolute;
-}
-
-.header__boards-menu {
-  @extend .header__section;
-}
-
 .header__brand {
-  @extend .header__section;
+  position: absolute;
   width: 99%;
   text-align: center;
 }
 
 .header__brand__text {
   margin: 0;
+  letter-spacing: 3px;
   margin-top: -1px;
-  font-weight: 300;
+  font-weight: 100;
   font-style: italic;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 30px;
   a {
-    color: darken($Color1, 15%);  
+    color: rgba(236, 233, 233, 0.59);
+    transition: color 0.1s;
     cursor: pointer;
     text-decoration: none;
     &:hover {
-      color: darken($Color1, 5%)
+      color: rgba(236, 233, 233, 1);
     }
   }
+}
+
+
+.header__section {
+  position: absolute;
+  background: rgba(255,255,255,0.3);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0, rgba(255,255,255,0.2) 100%);
+  border-radius: 3px;
+  cursor: pointer;
+  height: 30px;
+  min-width: 30px;
+  color: #f3f3f3;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 30px;
+  &:hover {
+    background: rgba(255,255,255,0.4);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0.4) 0, rgba(255,255,255,0.3) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0, rgba(255,255,255,0.3) 100%);
+    color: #fff;
+  }
+}
+
+.header__boards-menu {
+  @extend .header__section;
+  z-index: 10;
+  padding: 0 8px;
 }
 
 .header__account-menu {
   @extend .header__section;
   right: 5px;
-  border-radius: 3px;
-  background-color: #c7c7c7;
-  height: 30px;
-  min-width: 30px;
 }
 
 .header__account-menu__name {
   float: right;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 30px;
-  margin: 0 8px;
+  padding: 0 8px;
 }
 
 .header__account-menu__avatar {
@@ -367,6 +392,7 @@ input.card-body {
   margin: 0;
   padding: 0;
   font-weight: 100;
+  letter-spacing: 4px;
   font-style: italic;
   font-size: 3em;
   a {
