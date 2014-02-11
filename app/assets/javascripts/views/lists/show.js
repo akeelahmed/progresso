@@ -72,6 +72,7 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
             items: '.card',
             placeholder: 'card--placeholder',
             activeClass: 'card--dragged',
+            tolerance: 'pointer',
         }).disableSelection();
 
         return this;
