@@ -64,7 +64,7 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
         this.$el.data('id', this.model.id);
 
         var $newCardBtn = $('<div class="new-card-button"></div>')
-            .html('<span class="new-card-button__button">&#10010;</span>');
+            .html('<span class="new-card-button__button">Add a card...</span>');
 
         this.$el.append($newCardBtn);
         this.$('.cards').sortable({

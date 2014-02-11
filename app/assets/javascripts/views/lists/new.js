@@ -77,7 +77,7 @@ PRO.Views.ListNew = Backbone.View.extend({
             }));
             // render text field
         } else {
-            this.$el.html('<span class="list--new__button">new list!</span>');
+            this.$el.html('<span class="list--new__button">Add a list...</span>');
         }
         return this;
     }

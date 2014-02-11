@@ -61,9 +61,11 @@ PRO.Views.BoardShow = PRO.Views.ParentView.extend({
             handle: '.list__header',
             placeholder: 'list--placeholder',
             activeClass: 'list--dragged',
-            tolerance: "pointer"
-
-        }).disableSelection();
+            tolerance: "pointer",
+            delay:"75",
+            distance:"7"
+        })
+            .disableSelection();
     },
 
     handleAddedList: function() {

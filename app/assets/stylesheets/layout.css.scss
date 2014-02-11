@@ -70,7 +70,7 @@ a:hover {
 
 .container {
   height: 100%;
-  padding-top: 30px;
+  padding-top: 40px;
   
 }
 
@@ -146,31 +146,35 @@ a:hover {
 }
 
 .board__name {
-  padding: 10px;
+  display: inline-block;
+  margin-left: 17px;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+.board__name:hover {
+  background-color: darken($Color2, 7%);
 }
 
 .board__name__text {
-  margin: 0;
-  padding-left: 6px;
+  border-radius: 3px;
+  padding: 0 10px;
+  font-size: 18px;
   font-weight: bold;
-  letter-spacing: 0.02em;
-  font-size: 1.6em;
+  line-height: 30px;
+  color: #f6f6f6;
+  margin: 0;
 }
 
-.board__name__form input {
-  margin: 0;
-  padding: 0;
+.board__name input {
+  @extend .board__name__text;
+  font-size: 18px !important;
+  width: 100%;
+  text-decoration: underline;
   outline: none;
   border: none;
-  font-size: 1.6em;
-  font-family: $sans;
   box-shadow: none;
-  width: 100%;
-  font-style: italic;
-  letter-spacing: 0.02em;
-  font-size: 1.6em;
-  font-weight: bold;
-  background-color: $body-bg;
+  background-color: darken($Color2, 7%);
 }
 
 .board__lists-area {
@@ -222,6 +226,14 @@ a:hover {
 
 .list--new {
   @extend .list;
+  padding: 10px;
+  color: rgba(255,255,255,0.7);
+  background: rgba(0,0,0,0.12);
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    background: rgba(0,0,0,0.3);
+  }
 }
 
 .card {
@@ -229,12 +241,13 @@ a:hover {
   background-color: $card-bg;
   border-radius: 3px;
   border-bottom: 1px solid #bdbdbd;
-  cursor: pointer;
   max-width: 300px;
   min-height: 20px;
   padding: .2em .6em;
   font-size: 14px;
   font-weight: regular;
+  cursor: -webkit-grab;
+    cursor: grab;
 }
 
 .card--placeholder { 
@@ -248,7 +261,8 @@ a:hover {
 .card:hover {
   border-radius: 3px;
   background: $card-hover-bg;
-  cursor: pointer;
+  cursor: grab;
+  cursor: -webkit-grab;
 }
 
 .cards {
@@ -278,7 +292,26 @@ input.card-body {
 }
 
 .new-card-button {
+  position: relative;
+  left: -3px;
+  left: -3px;
+  width: 206px;
+  bottom: -3px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #939393;
+  padding: 7px 10px;
     cursor: pointer;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    color: #939393;
+    &:hover {
+      background-color: #c3c3c3;
+      color: #222;
+      text-decoration: underline;
+    }
 }
 
 .list__name__form {
