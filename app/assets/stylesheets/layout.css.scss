@@ -326,7 +326,8 @@ a:hover {
     }
 }
 
-.list__name__form {
+.list__name__form input{
+  background: transparent;
   margin: 0;
   padding: 0;
   outline: none;
@@ -334,7 +335,7 @@ a:hover {
   font-size: 15px;
   font-family: $sans;
   width: 100%;
-  font-style: italic;
+  text-decoration: underline;
   font-weight: bold;
 }
 
