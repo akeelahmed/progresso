@@ -7,7 +7,7 @@
 - [ ] submitting new board modal should open new board.
 - [ ] Refactor new card view to be reminiscent of new list view.
 
-- [ ] Editing existing card to have empty name should be the same as cancelling editing.
+- [ ] Editing existing card to have empty name should be the same as canceling editing.
 
 - [ ] Add the Pencil button to things that are editable
       Show pencil when hovering over editable thing.
