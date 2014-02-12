@@ -587,6 +587,23 @@ a:hover {
             width: 87%;
             max-width: 700px;
           }
+          
+          .boards-index {
+            padding: 30px;
+          }
+          
+          .boards {
+            padding-left: 0;
+          }
+          .boards__board-link {
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+          }
+          .boards__header {
+            margin-left: 0;
+            text-align: center;
+            }
         }
 
 	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
