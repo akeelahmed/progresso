@@ -1,12 +1,19 @@
 #MVP
 - [ ] Get rid of new views in board index.
-- [ ] New List should be self contained view that handles open/close events.
-- [ ] Move 'New Card' and 'New List' items out of their `<ul>`s so they cant be
-      dropped after.
-- [ ] Trying to save empty card should delete.
-- [ ] Add the Pencil to things that are editable
+- [ ] Add Plus Button to Boards.
+- [ ] Write Modal View class.
+- [ ] Write add new board Modal view class.
+- [ ] Pressing Plus button should open new board modal.
+- [ ] submitting new board modal should open new board.
+- [ ] Refactor new card view to be reminiscent of new list view.
+
+- [ ] Editing existing card to have empty name should be the same as cancelling editing.
+
+- [ ] Add the Pencil button to things that are editable
+      Show pencil when hovering over editable thing.
       <i class="fa fa-pencil"></i>
-- [ ] Add check and X to anything that's editable.
+
+- [ ] Add check and X to anything that's being edited.
       <i class="fa fa-check"></i>
       <i class="fa fa-times"></i>
 
