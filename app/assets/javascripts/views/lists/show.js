@@ -13,8 +13,6 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
     events: {
         'click .new-card-button': 'openNewView',
         'close .cards__new-card': 'closeNewView',
-        'click .list__name': 'openEditView',
-        'close .list__name': 'closeEditView',
         'sortstop .cards': 'resetCardinalities',
     },
 
@@ -26,18 +24,6 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
         });
 
         this.model.save({ ordered_card_ids: ids });
-    },
-
-    openEditView: function () {
-        this._editListView = new PRO.Views.ListEdit({ model: this.model });
-        this.$('.list__name').html(this._editListView.render().$el);
-        this.$('.list__name input').focus();
-    },
-
-    closeEditView: function () {
-        this._editListView.remove();
-        this._editListView = undefined;
-        this.$('.list__name').html(this.model.escape('name'));
     },
 
     renderCards: function() {
@@ -74,6 +60,10 @@ PRO.Views.ListShow = PRO.Views.ParentView.extend({
             activeClass: 'card--dragged',
             tolerance: 'pointer',
         }).disableSelection();
+
+        var nameView = new PRO.Views.ListName({ model: this.model });
+        this.adopt(nameView);
+        this.$('.list__header').replaceWith(nameView.render().$el);
 
         return this;
     },
