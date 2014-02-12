@@ -1,6 +1,6 @@
 #MVP
 - [ ] Get rid of new views in board index.
-- [ ] Add Plus Button to Boards.
+- [x] Add Plus Button to header.
 - [ ] Write Modal View class.
 - [ ] Write add new board Modal view class.
 - [ ] Pressing Plus button should open new board modal.

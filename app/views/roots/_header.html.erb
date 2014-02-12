@@ -2,6 +2,7 @@
     <div class="header__boards-menu">
         <i class="upside-down fa fa-bar-chart-o"></i> Boards
     </div>
+
     <div class="header__brand">
         <h4 class="header__brand__text">
             <a href="#">
@@ -9,10 +10,16 @@
             </a>
         </h4>
     </div>
-    <div class="header__account-menu">
-        <span class="header__account-menu__name">
+    <div class="header__section--right">
+        <div class="header__section--right__add-board-button">
+            <i class="fa fa-plus"></i>
+        </div>
+
+        <div class="header__section--right__account-menu">
+            <span class="header__section--right__account-menu__name">
             <%= current_user.name %>
-        </span>
-        <img class="header__account-menu__avatar" src="http://www.gravatar.com/avatar/<%= current_user.gravatar %>?s=64">
+            </span>
+            <img class="header__section--right__account-menu__avatar" src="http://www.gravatar.com/avatar/<%= current_user.gravatar %>?s=64">
+        </div>
     </div>
 </div>
