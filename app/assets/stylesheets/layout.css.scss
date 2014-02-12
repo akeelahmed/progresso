@@ -570,7 +570,24 @@ a:hover {
 	@media only screen and (min-width: 768px) and (max-width: 959px) {}
 
 	/* All Mobile Sizes (devices and browser) */
-	@media only screen and (max-width: 767px) {}
+	@media only screen and (max-width: 767px) {
+          .header__section--right__account-menu__avatar {
+            border-radius: 3px;
+          }
+          .header__section--right__account-menu__name {
+            display: none;
+          }
+          .list {
+            display: block;
+            margin: 10px auto;
+            width: 90%;
+          }
+          .card {
+            margin: 2px auto;
+            width: 87%;
+            max-width: 700px;
+          }
+        }
 
 	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 	@media only screen and (min-width: 480px) and (max-width: 767px) {}
