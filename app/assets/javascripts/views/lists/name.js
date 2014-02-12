@@ -1,9 +1,12 @@
 PRO.Views.ListName = Backbone.View.extend({
     className: 'list__header',
-
+    template: JST['lists/name'],
     events: {
         'click .list__header__name': 'toggleState',
+        'click .list__header__buttons': 'toggleState',
         'blur .list__header__name--input': 'saveAndToggleState',
+        'click .list__header__buttons--editing__ok': 'saveAndToggleState',
+        'click .list__header__buttons--editing__cancel': 'toggleState',
         'keyup .list__header__name--input': 'handleKey'
     },
 
@@ -15,6 +18,7 @@ PRO.Views.ListName = Backbone.View.extend({
     saveAndToggleState: function () {
         if (!this._editing) return;
         var newName = this.$('.list__header__name--input').val();
+
         if (newName.length === 0) {
             this.toggleState();
             return;
@@ -41,22 +45,11 @@ PRO.Views.ListName = Backbone.View.extend({
     },
 
     render: function () {
-        if (this._editing) {
-            var $input = $('<input type=\"text\">');
-            $input.addClass('list__header__name--input');
-            $input.val(this.model.escape('name'));
-            this.$el.html($input);
-
-            $input.focus();
-        } else {
-            var $name = $(
-                '<span class=\"list__header__name\">'
-                );
-            $name.html(this.model.escape('name'));
-
-            this.$el.html($name);
-        }
-
+        this.$el.html(this.template({
+            model: this.model,
+            editing: this._editing
+        }));
+        this.$('.list__header__name--input').focus();
         return this
     },
 

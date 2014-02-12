@@ -1,0 +1,14 @@
+<% if (editing) { %>
+   <input type="text" class="list__header__name--input" value="<%= model.escape('name') %>">
+   <span class="list__header__buttons--editing">
+      <i class="fa fa-check list__header__buttons--editing__ok"></i>
+      <i class="fa fa-times list__header__buttons--editing__cancel"></i>
+   </span>
+<% } else { %>
+   <span class="list__header__name">
+         <%= model.escape('name') %>
+   </span>
+   <span class="list__header__buttons">
+         <i class="fa fa-pencil"></i>
+   </span>
+<% } %>

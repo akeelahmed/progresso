@@ -212,9 +212,35 @@ a:hover {
   border: none;
   font-size: 15px;
   font-family: $sans;
-  width: 100%;
   text-decoration: underline;
   font-weight: bold;
+}
+
+.list__header__buttons {
+  opacity: 0;
+  font-size: 12px;
+  color: darken($list-bg, 20%);
+  transition: opacity 0.1s;
+  cursor: pointer;
+  position: absolute;
+  right: 3px;
+  top: 6px;
+}
+
+.list__header__buttons--editing {
+  @extend .list__header__buttons;
+  opacity: 1;
+}
+
+.list__header__buttons--editing__ok {
+  color: lighten(#64C464, 5%);
+}
+.list__header__buttons--editing__cancel {
+  color: lighten(#FF530D, 5%);
+}
+
+.list__header:hover .list__header__buttons {
+  opacity: 1;
 }
 
 .list {
@@ -310,6 +336,7 @@ a:hover {
     cursor: grab;
     padding: 0 26px 2px 6px;
     min-height: 19px;
+    position: relative;
 }
 
 .new-card-button {
