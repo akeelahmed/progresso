@@ -5,7 +5,7 @@ window.PRO = {
     Routers: {},
     Store: {},
     initialize: function() {
-        new PRO.Routers.Boards({content: "#content"});
+        new PRO.Routers.Boards({content: "#content", header: "#header"});
         Backbone.history.start();
     }
 };

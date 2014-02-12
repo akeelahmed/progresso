@@ -6,6 +6,7 @@ PRO.Routers.Boards = Backbone.Router.extend({
 
     initialize: function(options) {
         this.$content = $(options.content);
+        this.$header = $(options.header);
     },
 
     _swap: function(newView) {
