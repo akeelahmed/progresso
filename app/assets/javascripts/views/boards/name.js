@@ -15,8 +15,15 @@ PRO.Views.BoardName = Backbone.View.extend({
 
     saveAndToggleState: function() {
         if (!this._editing) return;
+        var newName = this.$('.board__name__input').val();
+
+        if (newName.length === 0) {
+            this.toggleState();
+            return;
+        }
+
         this.model.save({
-            name: this.$('.board__name__input').val()
+            name: newName
         }, {
             success: this.toggleState.bind(this)
         });
