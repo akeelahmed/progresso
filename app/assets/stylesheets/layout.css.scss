@@ -164,7 +164,8 @@ a:hover {
 .boards {
   padding: 0 0 0 50px;
   margin: 0;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
   list-style: none;
 }
