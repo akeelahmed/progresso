@@ -6,11 +6,16 @@ PRO.Routers.Boards = Backbone.Router.extend({
 
     initialize: function(options) {
         this.$content = $(options.content);
-        this.$header = $(options.header);
+        this.header = new PRO.Views.Header({
+            el: options.header
+        });
     },
 
     _swap: function(newView) {
         $('body').removeClass();
+        // When swapping, close modals.
+        this.header.closeModals();
+
         this._currentView && this._currentView.remove();
         this._currentView = newView;
         this.$content.html(newView.render().$el);
