@@ -29,10 +29,3 @@
 ```
     list.cards().set(json.cards, { parse: true })
 ```
-
-- [ ] Move the managing of edit views out of parent classes and into subviews.
-BoardView should have a EditableNameView which has two states, open and close.
-When open, render should show the form, when closed: render should show the text.
-when click on name, it changes state to open, and calls render.
-
-add list view will also be a similar editable view, which has two states, one as form and one as text(i.e. the add button). We will then have to deal with dropping in the new lists before the add list element.
