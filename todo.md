@@ -1,5 +1,5 @@
 #MVP
-- [ ] Get rid of new views in board index.
+- [x] Get rid of new views in board index.
 - [x] Add Plus Button to header.
 - [x] Write Modal View class.
 - [x] Write add new board Modal view class.
