@@ -1,10 +1,10 @@
 #MVP
 - [ ] Get rid of new views in board index.
 - [x] Add Plus Button to header.
-- [ ] Write Modal View class.
-- [ ] Write add new board Modal view class.
-- [ ] Pressing Plus button should open new board modal.
-- [ ] submitting new board modal should open new board.
+- [x] Write Modal View class.
+- [x] Write add new board Modal view class.
+- [x] Pressing Plus button should open new board modal.
+- [x] submitting new board modal should open new board.
 - [ ] Refactor new card view to be reminiscent of new list view.
 
 - [ ] Editing existing card to have empty name should be the same as canceling editing.
