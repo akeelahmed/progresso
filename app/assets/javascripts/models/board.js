@@ -1,18 +1,22 @@
 PRO.Models.Board = Backbone.Model.extend({
     urlRoot: '/api/v1/boards',
 
+    lists: function() {
+        this._lists || this._lists = new PRO.Collections.Lists();
+    },
+
      parse: function(response) {
-         response.lists = new PRO.Collections.Lists(
-            response.lists, { parse: true, board_id: response.id }
+         this.lists().set(
+             response.lists,
+             {
+                 parse: true,
+                 board_id: response.id,
+             }
          );
 
-         response.ordered_list_ids = response.lists.pluck('id');
+         delete response.lists;
+         response.ordered_list_ids = this.lists().pluck('id');
+
          return response;
      },
-
-    toJSON: function(options) {
-        var attrs = _.clone(this.attributes);
-        delete attrs.lists // Delete the lists collection.
-        return attrs;
-    },
 });
