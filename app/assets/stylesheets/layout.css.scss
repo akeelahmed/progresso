@@ -1,55 +1,40 @@
 /*
-* Skeleton V1.2
+* This stylesheet is
+* based loosely off of Skeleton V1.2
 * Copyright 2011, Dave Gamache
-* www.getskeleton.com
-* Free to use under the MIT license.
+* Which is protected under the MIT licence
 * http://www.opensource.org/licenses/mit-license.php
-* 6/20/2012
 */
 
-/* Table of Content
+/* Table of Contents
 ==================================================
-	#Site Styles
-	#Page Styles
-	#Media Queries
-	#Font-Face */
+* #Colors
+* #Fonts
+* #Mixins
+* #Utility
+* #Styles
+* #Media Queries 
+*
+*/
 
 /* #Colors
 ================================================== */
-@mixin green-button {
-  background: #24a828;
-  background: -webkit-linear-gradient(top, #24a828 0, #1b7e1e 100%);
-  background: linear-gradient(to bottom, #24a828 0, #1b7e1e 100%);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 700;
-  text-align: center;
-  font-size: 14px;
-  border-radius: 3px;
-  &:hover {
-    background: linear-gradient(to bottom, #1f9323 0, #166919 100%);
-  }
-}
 
 $Color1: #dbdbdb;
 $Color2: #23719F;
 $White: #FFF;
 
-$Blackdark: #393939;
-$Blacklight: lighten($Blackdark, 5%);
+$text-dark: #393939;
+$text: lighten($text-dark, 5%);
 
-$body-bg: $Color2;
-$lists-bg: $Color2;
-$list-bg: $Color1;
-$card-bg: #FFF;
+$card-hover-bg: darken($White, 5%);
+$card-placeholder: darken($White, 30%);
 
-$card-hover-bg: darken($card-bg, 5%);
-$card-placeholder: darken($card-bg, 30%);
-
-$text: $Blacklight; 
-$text-dark: $Blackdark;
+$button-text: $White
+$button-bg: #24a828;
+$button-bg-dark: #1b7e1e;
+$button-bg-hover:#1f9323;
+$button-bg-hover-dark:#166919;
 
 /* #Fonts
 ================================================== */
@@ -64,8 +49,32 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $sans
 }
 
+/* #Mixins
+================================================== */
+
+@mixin green-button {
+  background: $button-bg
+  background: -webkit-linear-gradient(top, $button-bg 0, $button-bg-dark 100%);
+  background: linear-gradient(to bottom, $button-bg 0, $button-bg-dark 100%);
+  color: $button-text;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 3px;
+  &:hover {
+    background: $button-bg-hover
+    background: -webkit-linear-gradient(top, $button-bg-hover 0, $button-bg-hover-dark 100%);
+  background: linear-gradient(to bottom, $button-bg-hover 0, $button-bg-hover-dark 100%);
+  }
+}
+
+/* #Utility
+================================================== */
+
 .upside-down {
-  filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2);  /* IE6,IE7 */
   ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; /* IE8 */
   -moz-transform: rotate(-180deg);  /* FF3.5+ */
   -o-transform: rotate(-180deg);  /* Opera 10.5 */
@@ -73,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 18px;
 }
 
-/* #Site Styles
+/* #Styles
 ================================================== */
 html, body {
   box-sizing: border-box;
@@ -99,18 +108,16 @@ a:hover {
 }
 
 .board-view .container {
-  background-color: $lists-bg;
+  background-color: $Color2;
 }
 
-/* #Page Styles
-================================================== */
 .boards-index {
   background-color: $White;
   padding-top: 50px;
 }
 
 .board {
-   background-color: $lists-bg;
+   background-color: $Color2;
    height: 100%;
 }
 
@@ -124,7 +131,7 @@ a:hover {
 
 .boards__board-link {
   position: relative;
-  background-color: $lists-bg;
+  background-color: $Color2;
   padding: 12px;
   height: 100px;
   display: inline-block;
@@ -135,7 +142,7 @@ a:hover {
   border-radius: 3px;
   cursor: pointer;
   &:hover {
-    background-color: darken($lists-bg, 5%);
+    background-color: darken($Color2, 5%);
   }
 }
 
@@ -145,10 +152,10 @@ a:hover {
 
 .boards__board-link__text {
   position:absolute; 
-  width:100%;
-  height:100%;
   top:0;
   left: 0;
+  width:100%;
+  height:100%;
   color: #f6f6f6;
   font-size: 16px;
   line-height: 22px;
@@ -236,7 +243,7 @@ a:hover {
 .list__header__buttons {
   opacity: 0;
   font-size: 12px;
-  color: darken($list-bg, 20%);
+  color: darken($Color1, 20%);
   transition: opacity 0.1s;
   cursor: pointer;
   position: absolute;
@@ -261,7 +268,7 @@ a:hover {
 }
 
 .list {
-  background-color: $list-bg;
+  background-color: $Color1;
   padding: 12px;
   display: inline-block;
   vertical-align: top;
@@ -273,7 +280,7 @@ a:hover {
 
 .list--placeholder {
   @extend .list;
-  background-color: darken($body-bg, 10%);
+  background-color: darken($Color2, 10%);
   width: 220px;
   height: 75px;
 }
@@ -304,7 +311,7 @@ a:hover {
 
 .card {
   margin: 0 3px 5px 3px;
-  background-color: $card-bg;
+  background-color: $White;
   border-radius: 3px;
   border-bottom: 1px solid #bdbdbd;
   max-width: 300px;
@@ -698,21 +705,3 @@ a:hover {
 	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 	@media only screen and (max-width: 479px) {}
 
-
-/* #Font-Face
-================================================== */
-/* 	This is the proper syntax for an @font-face file
-		Just create a "fonts" folder at the root,
-		copy your FontName into code below and remove
-		comment brackets */
-
-/*	@font-face {
-	    font-family: 'FontName';
-	    src: url('../fonts/FontName.eot');
-	    src: url('../fonts/FontName.eot?iefix') format('eot'),
-	         url('../fonts/FontName.woff') format('woff'),
-	         url('../fonts/FontName.ttf') format('truetype'),
-	         url('../fonts/FontName.svg#webfontZam02nTh') format('svg');
-	    font-weight: normal;
-	    font-style: normal; }
-*/
