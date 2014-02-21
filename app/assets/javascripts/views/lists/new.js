@@ -23,6 +23,10 @@ PRO.Views.ListNew = Backbone.View.extend({
         var that = this;
         if (!this._active) return;
         var name = this.$('#list-name').val();
+        if (name.length === 0) {
+            that.toggleState();
+            return;
+        }
         var newList = new PRO.Models.List({
             name: name,
             board_id: this.boardId
@@ -50,31 +54,12 @@ PRO.Views.ListNew = Backbone.View.extend({
         }
     },
 
-
-    save: function() {
-        var that = this;
-        var name = this.$('#list-name').val();
-        debugger;
-        if (name.length === 0) {
-            this.$el.trigger('close');
-            return;
-            //TODO refactor.
-        }
-        this.model.save(
-            { name: name },
-            {
-                success: function () {
-                    that.$el.trigger('close');
-                },
-            }
-        );
-    },
-
     render: function() {
         if (this._active) {
             this.$el.html(this.template({
                 model: new PRO.Models.List()
             }));
+            this.$('#list-name').focus();
             // render text field
         } else {
             this.$el.html('<span class="list--new__button">Add a list...</span>');
