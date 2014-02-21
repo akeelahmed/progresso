@@ -30,7 +30,7 @@ $text: lighten($text-dark, 5%);
 $card-hover-bg: darken($White, 5%);
 $card-placeholder: darken($White, 30%);
 
-$button-text: $White
+$button-text: $White;
 $button-bg: #24a828;
 $button-bg-dark: #1b7e1e;
 $button-bg-hover:#1f9323;
@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 ================================================== */
 
 @mixin green-button {
-  background: $button-bg
+  background: $button-bg;
   background: -webkit-linear-gradient(top, $button-bg 0, $button-bg-dark 100%);
   background: linear-gradient(to bottom, $button-bg 0, $button-bg-dark 100%);
   color: $button-text;
@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   border-radius: 3px;
   &:hover {
-    background: $button-bg-hover
+    background: $button-bg-hover;
     background: -webkit-linear-gradient(top, $button-bg-hover 0, $button-bg-hover-dark 100%);
   background: linear-gradient(to bottom, $button-bg-hover 0, $button-bg-hover-dark 100%);
   }
