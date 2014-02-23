@@ -1,5 +1,5 @@
 class List < ActiveRecord::Base
-  attr_accessible :board_id, :cardinality, :name, :ordered_card_ids
+  attr_accessible :board_id, :cardinality, :name, :ordered_card_ids, :archived
 
   validates :board_id, presence: true
 

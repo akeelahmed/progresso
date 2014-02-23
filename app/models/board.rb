@@ -1,5 +1,5 @@
 class Board < ActiveRecord::Base
-  attr_accessible :name, :owner_id, :ordered_list_ids
+  attr_accessible :name, :owner_id, :ordered_list_ids, :archived
 
   validates :name, :owner_id, presence: true
 
